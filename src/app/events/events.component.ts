@@ -30,9 +30,10 @@ export class EventsComponent {
 
     }
 
-pushPage() {
+pushPage(event) {
       // Let's navigate from TabsPage to Page1
-      this.navCtrl.push(EventsDetailComponent);
+      this.navCtrl.push(EventsDetailComponent, { events: event});
+  console.log(event);
    }
 
   }

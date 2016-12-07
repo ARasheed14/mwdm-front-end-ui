@@ -10,10 +10,11 @@ import { EventsService } from './events.service';
   styleUrls:['/events.component.scss'],
 })
 export class EventsDetailComponent {
+  public event;
   events: any;
-  constructor(private eventsService: EventsService, public navCtrl: NavController) {
+  constructor(private eventsService: EventsService, public navCtrl: NavController, private navParams: NavParams) {
     this.events = this.eventsService.getEvents();
-
+    this.event = navParams.get('events');
 
 
    }

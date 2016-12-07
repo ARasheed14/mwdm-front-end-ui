@@ -18,8 +18,8 @@
 
 <ion-content padding>
 <div *ngFor="let event of events">
-  <ion-row><img src="{{event.imageUrl}}"/></ion-row>
-  <ion-row class="event" (click)="pushPage()">
+  <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
+  <ion-row class="event" (click)="pushPage(event)">
 
 
     <ion-col width-30>
