@@ -1,11 +1,50 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons ion-button icon only>
+      <ion-icon name="moon"></ion-icon>
+    </ion-buttons>
+
     <ion-title>
-      Programs
+      <h1 color="secondary">Programs</h1>
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon only>
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+<div *ngFor="let program of programs">
+  <ion-row class="imgdetail"><img src="{{program.imageUrl}}"></ion-row>
+  <ion-row class="program" (click)="pushPage(program)">
 
+    <ion-col width-30>
+      <ion-row class="twelve">{{ program.date }}</ion-row>
+      <ion-row class="sixt" >{{ program.date.month }}</ion-row>
+      <ion-row class="tween">{{ program.date.number }}</ion-row>
+    </ion-col>
+    <ion-col width-80>
+
+      <ion-row class="programdetails">
+              {{ program.title }}
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-10>
+                <ion-row>
+              <ion-icon name="md-pin" class="ionpin" color="secondary"> </ion-icon>
+                </ion-row>
+              </ion-col>
+              <ion-col width-90>
+                <ion-row class="locdetails">
+                  {{ program.location.name }} | {{ program.time }}
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+</div>
 </ion-content>

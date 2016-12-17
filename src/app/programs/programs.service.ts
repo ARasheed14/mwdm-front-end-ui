@@ -12,7 +12,7 @@ export class ProgramsService {
   getPrograms(){
     return [
       {
-        title: "Event",
+        title: "Program",
           date: "October 6, 2016",
           location:
           {
@@ -20,11 +20,11 @@ export class ProgramsService {
             address:"6641 Belfort St. Houston, Tx 77087",
           },
           time: "1:00",
-          description: "Event",
-          imageUrl: "",
+          description: "Program",
+          imageUrl: "https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?h=350&auto=compress",
       },
       {
-        title: "Event",
+        title: "Program",
           date: "October 6, 2016",
           location:
           {
@@ -32,8 +32,8 @@ export class ProgramsService {
             address:"6641 Belfort St. Houston, Tx 77087",
           },
           time: "1:00",
-          description: "Event",
-          imageUrl: "",
+          description: "Program",
+          imageUrl: "https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?h=350&auto=compress",
       },
     ];
   }

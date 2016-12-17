@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    {{ title }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<sebm-google-map [latitude]="lat" [longitude]="lng">
+  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+</sebm-google-map>
+
+<ion-row>
+  <button ion-button full>Get Directions</button>
+</ion-row>
+
+
+</ion-content>
