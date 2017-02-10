@@ -6,6 +6,5 @@ import { Observable } from 'rxjs/Observable';
 export class DonateService {
   private _donateUrl = '#';
   constructor(private_http: Http){
-
   }
 }

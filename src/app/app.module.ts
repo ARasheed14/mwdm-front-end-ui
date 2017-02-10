@@ -20,9 +20,6 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 
 
 
-
-
-
 @NgModule({
   declarations: [
     MyApp,

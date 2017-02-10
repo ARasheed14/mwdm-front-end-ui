@@ -17,9 +17,6 @@ export class TabsPage {
    tab2Root: any = LecturesComponent;
    tab3Root: any = DonateComponent;
    tab4Root: any = ProgramsComponent;
-
-
   constructor() {
-
   }
 }

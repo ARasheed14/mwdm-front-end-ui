@@ -1,17 +1,12 @@
 <ion-header>
   <ion-navbar>
-
     <ion-title>
       <h1 color="secondary">Event</h1>
-
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-
   <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
-
   <ion-col width-100>
   <ion-row class="titlede"> {{ event.title }} </ion-row>
   </ion-col>
@@ -26,7 +21,7 @@
        <ion-row> {{ event.time }} </ion-row>
     </ion-col>
   </ion-row>
-  <ion-row class="border" (click)="pushPage(map)">
+  <ion-row class="border" (click)="pushPage()">
   <ion-col width-30>
           <ion-row>
             <ion-icon name="md-pin" class="ionicon" color="secondary"> </ion-icon>
@@ -40,7 +35,6 @@
   <ion-col width-100>
     <ion-row class="descr"> {{ event.description }} </ion-row>
   </ion-col>
-
 </ion-content>
 
 

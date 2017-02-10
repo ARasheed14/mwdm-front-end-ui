@@ -4,10 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProgramsService {
-
   private _programsUrl = '#';
   constructor(private_http: Http){
-
   }
   getPrograms(){
     return [
@@ -21,7 +19,7 @@ export class ProgramsService {
           },
           time: "1:00",
           description: "Program",
-          imageUrl: "https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?h=350&auto=compress",
+          imageUrl: "./assets/images/375x300.jpg",
       },
       {
         title: "Program",
@@ -33,7 +31,7 @@ export class ProgramsService {
           },
           time: "1:00",
           description: "Program",
-          imageUrl: "https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?h=350&auto=compress",
+          imageUrl: "./assets/images/375x300.jpg",
       },
     ];
   }

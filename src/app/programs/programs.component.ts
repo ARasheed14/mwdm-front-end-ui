@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { ProgramsService } from './programs.service';
 import { NavController, NavParams } from 'ionic-angular';
-
 import { ProgramsDetailComponent } from './programs-detail.component';
 
 
 @Component({
   templateUrl: 'programs.component.html',
   styleUrls:['/programs.component.scss'],
-
 })
 export class ProgramsComponent {
   programs: any;
@@ -20,5 +18,4 @@ export class ProgramsComponent {
       this.navCtrl.push(ProgramsDetailComponent, { programs: program});
   console.log(event);
    }
-
 }

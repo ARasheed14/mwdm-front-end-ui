@@ -3,11 +3,9 @@
     <ion-buttons ion-button icon-only>
       <ion-icon name="moon"></ion-icon>
     </ion-buttons>
-
     <ion-title>
       <h1 color="secondary">Events</h1>
     </ion-title>
-
     <ion-buttons end>
       <button ion-button icon-only>
         <ion-icon name="md-more"></ion-icon>
@@ -15,25 +13,19 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
 <div *ngFor="let event of events">
   <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
   <ion-row class="event" (click)="pushPage(event)">
-
-
     <ion-col width-30>
         <ion-row class="twelve" >{{ event.date.day }}</ion-row>
         <ion-row class="sixt" >{{ event.date.month }}</ion-row>
         <ion-row class="tween">{{ event.date.number }}</ion-row>
     </ion-col>
     <ion-col width-80>
-
             <ion-row class="eventdetails">
               {{ event.title }}
             </ion-row>
-
-
             <ion-row>
               <ion-col width-10>
                 <ion-row>
@@ -48,6 +40,5 @@
             </ion-row>
           </ion-col>
         </ion-row>
-
 </div>
 </ion-content>

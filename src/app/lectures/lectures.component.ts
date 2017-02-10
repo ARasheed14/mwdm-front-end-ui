@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { LecturesService } from './lectures.service';
 // import { HomePage } from '../home/home';
@@ -6,7 +5,8 @@ import { LecturesService } from './lectures.service';
 // import { ContactPage } from '../contact/contact';
 
 @Component({
-  templateUrl: 'lectures.component.html'
+  templateUrl: 'lectures.component.html',
+  styleUrls:['/lectures.component.scss'],
 })
 export class LecturesComponent {
   // this tells the tabs component which Pages

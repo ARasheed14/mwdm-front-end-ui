@@ -25,21 +25,12 @@ export class EventsComponent {
   maps: any;
   constructor(private eventsService: EventsService, public navCtrl: NavController) {
     this.events = this.eventsService.getEvents();
-
-
-
-
-
     }
-
 pushPage(event) {
       // Let's navigate from TabsPage to Page1
       this.navCtrl.push(EventsDetailComponent, { events: event});
   console.log(event);
    }
-
-
-
   }
 
 

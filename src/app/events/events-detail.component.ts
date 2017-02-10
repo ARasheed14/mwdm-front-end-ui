@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { EventsComponent } from './events.component.html';
 import { EventsService } from './events.service';
 import { MapPage } from './events-map.component';
 
@@ -17,16 +16,11 @@ export class EventsDetailComponent {
   constructor(private eventsService: EventsService, public navCtrl: NavController, private navParams: NavParams) {
     this.events = this.eventsService.getEvents();
     this.event = navParams.get('events');
-
-
    }
     pushPage(map) {
-
       this.navCtrl.push(MapPage, { maps: map});
   console.log(map);
    }
-
-
   }
 
 
