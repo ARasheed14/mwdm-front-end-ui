@@ -1,44 +1,51 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons ion-button icon-only>
-      <ion-icon name="moon"></ion-icon>
-    </ion-buttons>
+
+    <button ion-button icon-only menuToggle>
+      <img src="./assets/images/masjidLogoone.png" class="headerlogo"/>
+    </button>
+
     <ion-title>
       <h1 color="secondary">Events</h1>
     </ion-title>
+
     <ion-buttons end>
       <button ion-button icon-only>
-        <ion-icon name="md-more"></ion-icon>
+        <ion-icon name="more" color="secondary"></ion-icon>
       </button>
     </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 <ion-content padding>
 <div *ngFor="let event of events">
-  <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
-  <ion-row class="event" (click)="pushPage(event)">
-    <ion-col width-30>
-        <ion-row class="twelve" >{{ event.date.day }}</ion-row>
-        <ion-row class="sixt" >{{ event.date.month }}</ion-row>
-        <ion-row class="tween">{{ event.date.number }}</ion-row>
-    </ion-col>
-    <ion-col width-80>
-            <ion-row class="eventdetails">
-              {{ event.title }}
-            </ion-row>
-            <ion-row>
-              <ion-col width-10>
-                <ion-row>
-              <ion-icon name="md-pin" class="ionpin" color="secondary"> </ion-icon>
-                </ion-row>
-              </ion-col>
-              <ion-col width-90>
-                <ion-row class="locdetails">
-                  {{ event.location.name }} | {{ event.time }}
-                </ion-row>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-        </ion-row>
+  <ion-grid>
+    <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
+    <ion-row class="event" (click)="pushPage(event)" align-items-center>
+
+        <ion-col>
+          <ion-row class="eventDay">{{ event.date.day }}</ion-row>
+          <ion-row class="eventMonth">{{ event.date.month }}</ion-row>
+          <ion-row class="eventDate">{{ event.date.number }}</ion-row>
+        </ion-col>
+        <ion-col col-8>
+          <ion-row class="eventdetails">
+            {{event.title}}
+          </ion-row>
+          <ion-row>
+            <ion-col col-2>
+              <ion-row>
+                <ion-icon name="pin" class="ionpin" color="secondary"></ion-icon>
+              </ion-row>
+            </ion-col>
+            <ion-col col-10>
+              <ion-row class="locdetails">
+                {{event.location.name}} | {{event.time}}
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>
 </ion-content>

@@ -1,13 +1,32 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <img src="./assets/images/masjidLogoone.png" class="headerlogo"/>
+    </button>
+
     <ion-title>
       <h1 color="secondary">Donations</h1>
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more" color="secondary"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding>
-    <ion-row><img src="./assets/images/375x300.jpg"/></ion-row>
-    <ion-row><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus felis ac euismod dictum. Nullam varius neque molestie dolor bibendum, eu efficitur enim auctor. Pellentesque malesuada ipsum eget libero interdum, eu pellentesque enim finibus. Donec at felis mauris. Quisque quis libero vitae metus accumsan lobortis.</p></ion-row>
-  <button ion-button full (click)="btnBuyNow">Donate With PayPal</button>
-  <button ion-button full>Donate With Card</button>
+  <ion-row>
+    <ion-col>
+      <img src="./assets/images/center.jpg"/>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus felis ac euismod dictum. Nullam varius neque molestie dolor bibendum, eu efficitur enim auctor. Pellentesque malesuada ipsum eget libero interdum, eu pellentesque enim finibus. Donec at felis mauris. Quisque quis libero vitae metus accumsan lobortis.</p></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-6 (click)="pushPage()"><button ion-button block>PayPal</button></ion-col>
+    <ion-col col-6><button ion-button block>Pay Type</button></ion-col>
+  </ion-row>
 </ion-content>

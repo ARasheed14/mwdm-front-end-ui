@@ -14,8 +14,6 @@ export class LecturesComponent {
   // tab1Root: any = HomePage;
   // tab2Root: any = AboutPage;
   // tab3Root: any = ContactPage;
-  lectures: any;
-  constructor(private lecturesService: LecturesService) {
-    this.lectures = this.lecturesService.getLectures();
-  }
+
+  constructor() {}
 }

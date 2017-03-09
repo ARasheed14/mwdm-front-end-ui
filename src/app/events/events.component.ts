@@ -2,37 +2,29 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { EventsService } from './events.service';
 import { EventsDetailComponent } from './events-detail.component';
-import { MapPage } from './events-map.component';
+import { EventsMapComponent } from './events-map.component';
 
+/*
+  Generated class for the Events page.
 
-
-// import { HomePage } from '../home/home';
-// import { AboutPage } from '../about/about';
-// import { ContactPage } from '../contact/contact';
-
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
   templateUrl: 'events.component.html',
   styleUrls:['/events.component.scss'],
 })
 export class EventsComponent {
-
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  // tab1Root: any = HomePage;
-  // tab2Root: any = AboutPage;
-  // tab3Root: any = ContactPage;
   events: any;
   maps: any;
-  constructor(private eventsService: EventsService, public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private eventsService: EventsService) {
     this.events = this.eventsService.getEvents();
-    }
-pushPage(event) {
-      // Let's navigate from TabsPage to Page1
-      this.navCtrl.push(EventsDetailComponent, { events: event});
-  console.log(event);
-   }
+  }
+  pushPage(event){
+    this.navCtrl.push(EventsDetailComponent, {events: event});
+  }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad EventsComponent');
   }
 
-
-
-
+}

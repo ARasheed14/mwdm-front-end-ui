@@ -1,23 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler, ApplicationRef } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { MyApp } from './app.component';
 import { EventsComponent } from './events/events.component';
-import { TabsPage } from './tabs/tabs';
-import { EventsService } from './events/events.service';
 import { EventsDetailComponent } from './events/events-detail.component';
+import { EventsService } from './events/events.service';
+import { EventsMapComponent } from './events/events-map.component';
 import { LecturesComponent } from './lectures/lectures.component';
-import { LecturesService } from './lectures/lectures.service';
-import { ProgramsComponent } from './programs/programs.component';
-import { ProgramsService } from './programs/programs.service';
 import { DonateComponent } from './donate/donate.component';
-import { DonateService } from './donate/donate.service';
-import { MapPage } from './events/events-map.component';
-import { ProgramsDetailComponent } from './programs/programs-detail.component';
-import { AgmCoreModule } from 'angular2-google-maps/core';
-
+import { PayPalComponent } from './donate/paypal.component';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from './tabs/tabs';
 
 
 @NgModule({
@@ -25,34 +19,32 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     MyApp,
     EventsComponent,
     EventsDetailComponent,
+    EventsMapComponent,
     LecturesComponent,
     DonateComponent,
-    ProgramsComponent,
-    ProgramsDetailComponent,
-    MapPage,
+    PayPalComponent,
+    AboutPage,
+    ContactPage,
+    HomePage,
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    BrowserModule,
-    CommonModule,
-    FormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCsL_JSo-hEzd_Qbx5OTDaI_SlQ1T2-p48'
-    })
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     EventsComponent,
     EventsDetailComponent,
+    EventsMapComponent,
     LecturesComponent,
     DonateComponent,
-    ProgramsComponent,
-    ProgramsDetailComponent,
-    MapPage,
+    PayPalComponent,
+    AboutPage,
+    ContactPage,
+    HomePage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, EventsService, LecturesService, ProgramsService, DonateService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, EventsService]
 })
 export class AppModule {}

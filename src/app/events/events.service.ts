@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class EventsService {
-    private _eventsUrl = '#';
+    //private _eventsUrl = '#';
     constructor(private_http: Http) {
     }
     getEvents() {
