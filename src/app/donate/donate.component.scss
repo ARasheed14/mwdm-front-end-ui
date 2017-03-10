@@ -1,22 +1,20 @@
-.donateBtn {
-  background-color: #005EA6;
-  border-radius: 5px;
-  height: 60px;
-  width: 20px;
-  margin: 1px 1px 1px 1px;
-  padding: 12px 0px 0px 0px;
-  font-size: 26px;
+@mixin text-styles{
   text-align: center;
-  color: white;
-  box-shadow: 0px 1px 1px -1px #333;
-  text-shadow: 0px -1px #333;
+  font-family: robot;
 }
-.donateBtn:after{
-	content: '';
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	width: calc(100% - 1px);
-	height: 10%;
-	background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+.button {
+  font-family: roboto;
 }
+
+h1, h2, h3, h4 {
+  @include text-styles;
+}
+.border {
+  border-bottom: 1px solid #b8b8b8;
+}
+p {
+  @include text-styles;
+  font-size: 16px;
+}
+
+

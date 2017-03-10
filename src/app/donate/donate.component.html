@@ -15,18 +15,28 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+<ion-content padding has-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img src="./assets/images/center.jpg"/>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 class="border"><h4>Houston Masjid of Al-Islam Presents!</h4></ion-col>
+        <ion-col col-12 class="border"><h2>Ibrahim Kamaluddin Community Center</h2></ion-col>
+        <p>
+          Join us as we build the Houston Masjid of Al-Islam's own community center. The Ibrahim Kamaluddin Center!
+          This center will serve as a safe space promoting plenty of activities for our community not only for our current
+          generations, but for the generation to come in the future. Be a part of the vision! Please become a part of the project.
+          Engage! Contribute to the vision!
 
-<ion-content padding>
-  <ion-row>
-    <ion-col>
-      <img src="./assets/images/center.jpg"/>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-12><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus felis ac euismod dictum. Nullam varius neque molestie dolor bibendum, eu efficitur enim auctor. Pellentesque malesuada ipsum eget libero interdum, eu pellentesque enim finibus. Donec at felis mauris. Quisque quis libero vitae metus accumsan lobortis.</p></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-6 (click)="pushPage()"><button ion-button block>PayPal</button></ion-col>
-    <ion-col col-6><button ion-button block>Pay Type</button></ion-col>
-  </ion-row>
+        </p>
+
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 (click)="pushPage()"><button ion-button block>Donate With PayPal</button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

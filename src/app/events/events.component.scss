@@ -2,6 +2,10 @@
 ion-app._gmaps_cdv_ .nav-decor{
   background-color: transparent !important;
 }
+@mixin text-styles{
+  text-align: center;
+  font-family: robot;
+}
 div .event {
   box-shadow:0 2px 4px 0 grey;
   margin: 0px 0px 10px 0px;
@@ -11,43 +15,61 @@ div .event {
 div .eventdetails {
 color: #000000;
 font-size: 18px;
+@include text-styles;
 }
 div .locdetails {
   color: #000000;
   font-size: 12px;
+  @include text-styles;
+}
+h1 {
+  @include text-styles;
 }
 .twelve{
   font-size:10px;
+  @include text-styles;
   color: dimgray;
   vertical-align: middle;
 }
 .sixt{
 font-size:16px;
+@include text-styles;
 color: dimgray;
 vertical-align: middle;
 }
 .tween{
 font-size:22px;
+@include text-styles;
 color: dimgray;
 vertical-align: middle;
 }
 .eventDay{
   font-size:10px;
+  @include text-styles;
   color: dimgray;
   vertical-align: middle;
   padding-left: 10px;
 }
 .eventMonth{
 font-size:16px;
+@include text-styles;
 color: dimgray;
 vertical-align: middle;
 padding-left: 10px;
 }
 .eventDate{
 font-size:22px;
+@include text-styles;
 color: dimgray;
 vertical-align: middle;
 padding-left: 10px;
+}
+.singleEventInfo {
+  @include text-styles;
+}
+.singleEventName {
+  @include text-styles;
+  padding-left: 50px;
 }
 .ionpin {
   font-size: 24px;
@@ -68,10 +90,10 @@ padding-left: 10px;
   border-bottom: 1px solid #b8b8b8;
   font-size: 30px;
   color: dimgray;
-  text-align: center;
+  @include text-styles;
 }
 .center {
-  text-align: center;
+  @include text-styles;
 }
 .border {
   border-bottom: 1px solid #b8b8b8;
@@ -81,11 +103,13 @@ padding-left: 10px;
 .descr {
   color: dimgray;
   font-size: 20px;
+  @include text-styles;
 
 }
 .ionicon {
   font-size: 48px;
   color: secondary;
+  padding-left: 30px;
 }
 .headerlogo {
   height: 27px;

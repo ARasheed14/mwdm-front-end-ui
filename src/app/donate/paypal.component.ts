@@ -5,7 +5,8 @@ import { Platform, NavController } from 'ionic-angular';
 import { DonateComponent } from './donate.component';
 
 @Component({
-  templateUrl: 'paypal.component.html'
+  templateUrl: 'paypal.component.html',
+  styleUrls:['/donate.component.scss']
 })
 
 export class PayPalComponent {

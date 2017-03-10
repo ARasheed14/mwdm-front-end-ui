@@ -11,11 +11,11 @@
       <ion-col col-12 class="titlede">{{event.title}}</ion-col>
     </ion-row>
     <ion-row class="border">
-      <ion-col col-4>
-        <ion-icon name="calendar" class="ionicon" colors="secondary"></ion-icon>
+      <ion-col col-5>
+        <ion-icon name="calendar" class="ionicon" color="secondary" item-right></ion-icon>
       </ion-col>
-      <ion-col col-8>
-        <ion-row>{{event.date.day}}, {{event.date.month}} {{event.date.number}}</ion-row>
+      <ion-col col-7>
+        <ion-row class="singleEventInfo">{{event.date.day}}, {{event.date.month}} {{event.date.number}}</ion-row>
         <ion-row></ion-row>
       </ion-col>
     </ion-row>
@@ -26,8 +26,8 @@
           </ion-row>
         </ion-col>
         <ion-col col-8>
-          <ion-row>{{event.location.name}}</ion-row>
-          <ion-row>{{event.location.address}}</ion-row>
+          <ion-row class="singleEventName">{{event.location.name}}</ion-row>
+          <ion-row class="singleEventInfo">{{event.location.address}}</ion-row>
         </ion-col>
     </ion-row>
     <ion-row>
