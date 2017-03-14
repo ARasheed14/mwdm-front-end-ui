@@ -19,29 +19,39 @@
 </ion-header>
 <ion-content padding class="scroll-content">
 <div *ngFor="let event of events">
-  <ion-grid>
+  <ion-grid no-padding>
     <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
-    <ion-row class="event" (click)="pushPage(event)" align-items-center>
-
-        <ion-col>
-          <ion-row class="eventDay">{{ event.date.day }}</ion-row>
-          <ion-row class="eventMonth">{{ event.date.month }}</ion-row>
-          <ion-row class="eventDate">{{ event.date.number }}</ion-row>
-        </ion-col>
-        <ion-col col-8>
-          <ion-row class="eventdetails">
-            {{event.title}}
-          </ion-row>
-          <ion-row>
-            <ion-col col-2>
-              <ion-row>
-                <ion-icon name="pin" class="ionpin" color="secondary"></ion-icon>
-              </ion-row>
+    <ion-row class="event" (click)="pushPage(event)">
+        <ion-col col-3 class="reducedPadding">
+          <ion-row class="eventDay">
+            <ion-col col-12>
+            {{ event.date.day }}
             </ion-col>
-            <ion-col col-10>
-              <ion-row class="locdetails">
+            </ion-row>
+          <ion-row class="eventMonth">
+            <ion-col col-12>
+              {{ event.date.month }}
+            </ion-col>
+            </ion-row>
+          <ion-row class="eventDate">
+            <ion-col col-12>
+              {{ event.date.number }}
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col col-9>
+          <ion-row class="eventTitle">
+            <ion-col col-12>
+              {{event.title}}
+              </ion-col>
+          </ion-row>
+          <ion-row class="eventdetails">
+            <ion-col col-4>
+                <ion-icon name="pin" class="ionpin" color="secondary"></ion-icon>
+            </ion-col>
+            <ion-col col-8 class="locdetails">
                 {{event.location.name}} | {{event.time}}
-              </ion-row>
             </ion-col>
           </ion-row>
         </ion-col>

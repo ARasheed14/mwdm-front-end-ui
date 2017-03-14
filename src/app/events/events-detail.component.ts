@@ -21,6 +21,10 @@ export class EventsDetailComponent {
     this.event = navParams.get('events');
     this.start = "";
   }
+  /**
+   * @name navigate
+   * @param {string} address - Sends user to event location in device map
+   */
   navigate(address){
     let options: LaunchNavigatorOptions = {
       start: this.start

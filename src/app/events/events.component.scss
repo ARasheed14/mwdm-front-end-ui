@@ -4,7 +4,7 @@ ion-app._gmaps_cdv_ .nav-decor{
 }
 @mixin text-styles{
   text-align: center;
-  font-family: robot;
+  font-family: ArialMT;
 }
 div .event {
   box-shadow:0 2px 4px 0 grey;
@@ -15,12 +15,23 @@ div .event {
 div .eventdetails {
 color: #000000;
 font-size: 18px;
-@include text-styles;
+font-family: ArialMT;
+padding-right: 5px;
+
+}
+.eventTitle {
+  font-size: 20px;
+  text-align: right;
+  font-family: ArialMT;
+  padding-right: 5px;
 }
 div .locdetails {
-  color: #000000;
-  font-size: 12px;
-  @include text-styles;
+  color: dimgray;
+  font-size: 14px;
+  text-align:right;
+}
+.col {
+  padding: 2px;
 }
 .scroll-content{
   height: 100%;
@@ -47,26 +58,33 @@ color: dimgray;
 vertical-align: middle;
 }
 .eventDay{
-  font-size:10px;
+  font-size:12px;
   @include text-styles;
   color: dimgray;
   vertical-align: middle;
-  padding-left: 10px;
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 .eventMonth{
 font-size:16px;
 @include text-styles;
 color: dimgray;
 vertical-align: middle;
-padding-left: 10px;
+padding: 0px;
+margin-top: 0px;
+margin-bottom: 0px;
 }
 .eventDate{
-font-size:22px;
+font-size:24px;
 @include text-styles;
 color: dimgray;
 vertical-align: middle;
-padding-left: 10px;
+padding: 0px;
+margin-top: 0px;
+margin-bottom: 0px;
 }
+
 .singleEventInfo {
   @include text-styles;
 }
@@ -75,8 +93,11 @@ padding-left: 10px;
   padding-left: 50px;
 }
 .ionpin {
-  font-size: 24px;
+  font-size: 28px;
   color: secondary;
+  float: right;
+  padding: 0px;
+  margin: 0px;
 }
 
 .back {

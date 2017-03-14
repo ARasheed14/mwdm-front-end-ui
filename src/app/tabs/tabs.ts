@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { EventsComponent } from '../events/events.component';
 import { LecturesComponent } from '../lectures/lectures.component';
 import { DonateComponent } from '../donate/donate.component';
+import { ProgramsComponent } from '../programs/programs.component';
 
 // import { HomePage } from './pages/home/home';
 // import { AboutPage } from './pages/about/about';
@@ -17,7 +18,7 @@ export class TabsPage {
   tab1Root: any = EventsComponent;
   tab2Root: any = LecturesComponent;
   tab3Root: any = DonateComponent;
-  tab4Root: any = EventsComponent;
+  tab4Root: any = ProgramsComponent;
 
   constructor() {
 
