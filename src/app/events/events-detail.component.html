@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="scroll-content">
   <ion-grid>
     <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
     <ion-row>
@@ -19,7 +19,7 @@
         <ion-row></ion-row>
       </ion-col>
     </ion-row>
-    <ion-row class="border" (click)="pushPage()">
+    <ion-row class="border" (click)="navigate(event.location.address)">
         <ion-col col-4>
           <ion-row>
             <ion-icon name="pin" class="ionicon" color="secondary"></ion-icon>

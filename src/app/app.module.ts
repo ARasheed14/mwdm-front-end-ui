@@ -12,6 +12,8 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from './tabs/tabs';
+import { HttpModule } from '@angular/http';
+import { LecturesService } from './lectures/lectures.service';
 
 
 @NgModule({
@@ -45,6 +47,6 @@ import { TabsPage } from './tabs/tabs';
     HomePage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, EventsService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, EventsService, LecturesService]
 })
 export class AppModule {}

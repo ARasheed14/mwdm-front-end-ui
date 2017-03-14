@@ -22,6 +22,9 @@ div .locdetails {
   font-size: 12px;
   @include text-styles;
 }
+.scroll-content{
+  height: 100%;
+}
 h1 {
   @include text-styles;
 }
