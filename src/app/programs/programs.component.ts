@@ -20,7 +20,7 @@ export class ProgramsComponent {
   }
   getPrograms(){
     this.programsService.getPrograms().subscribe(response => {
-      this.programs = response.Items;
+       this.programs = response.Items;
       console.log(this.programs);
       console.log(response);
       console.log(response.Items);

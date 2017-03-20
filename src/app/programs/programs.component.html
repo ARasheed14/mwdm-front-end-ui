@@ -27,11 +27,11 @@
     </ion-row>
   <ion-list *ngFor="let program of programs">
   <ion-list-header>
-   <h2>{{program.dayOfWeek}}</h2>
+   <h2>{{program.dayOfWeek | amDateFormat:'dddd'}}</h2>
   </ion-list-header>
   <ion-item> <ion-icon name="book"></ion-icon> {{program.name}}</ion-item>
-  <ion-item>Starts: {{program.startTime | dateConvert}}</ion-item>
-  <ion-item>Ends: {{program.endTime | dateConvert}}</ion-item>
+  <ion-item>Starts: {{program.startTime | amDateFormat: 'h:mm a'}}</ion-item>
+  <ion-item>Ends: {{program.endTime | amDateFormat: 'h:mm a'}}</ion-item>
 </ion-list>
 </ion-grid>
 </ion-content>

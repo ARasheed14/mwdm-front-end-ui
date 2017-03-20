@@ -17,6 +17,7 @@ import { HttpModule } from '@angular/http';
 import { LecturesService } from './lectures/lectures.service';
 import { ProgramsService } from './programs/programs.service';
 import { DateConvert } from './pipes/date.pipe';
+import { MomentModule } from 'angular2-moment';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { DateConvert } from './pipes/date.pipe';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    MomentModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

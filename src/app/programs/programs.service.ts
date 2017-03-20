@@ -9,7 +9,7 @@ export class ProgramsService {
   baseUrl: String;
   constructor(http: Http) {
     this.http = http;
-    this.baseUrl = 'https://zwgkahn9pl.execute-api.us-west-2.amazonaws.com/dev?MasjidID=SM866eca5b-a510-4eb7-8144-f51ea2b9d6c2'
+    this.baseUrl = 'https://bg36te82e5.execute-api.us-west-2.amazonaws.com/dev/masjids/SM866eca5b-a510-4eb7-8144-f51ea2b9d6c2/programs'
   }
   getPrograms() {
     return this.http.get(this.baseUrl)

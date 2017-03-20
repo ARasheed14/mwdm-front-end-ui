@@ -15,8 +15,8 @@
         <ion-icon name="calendar" class="ionicon" color="secondary" item-right></ion-icon>
       </ion-col>
       <ion-col col-7>
-        <ion-row class="singleEventInfo">{{event.date.day}}, {{event.date.month}} {{event.date.number}}</ion-row>
-        <ion-row></ion-row>
+        <ion-row class="singleEventInfo"> Starts: {{event.startDate | amDateFormat: 'h:mm a' }}</ion-row>
+        <ion-row class="singleEventInfo"> Ends:   {{event.endDate | amDateFormat: 'h:mm a' }}</ion-row>
       </ion-col>
     </ion-row>
     <ion-row class="border" (click)="navigate(event.location.address)">

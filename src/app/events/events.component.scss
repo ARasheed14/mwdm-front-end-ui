@@ -28,7 +28,7 @@ padding-right: 5px;
 div .locdetails {
   color: dimgray;
   font-size: 14px;
-  text-align:right;
+  text-align:left;
 }
 .col {
   padding: 2px;
@@ -90,7 +90,7 @@ margin-bottom: 0px;
 }
 .singleEventName {
   @include text-styles;
-  padding-left: 50px;
+  padding-left: 25px;
 }
 .ionpin {
   font-size: 28px;

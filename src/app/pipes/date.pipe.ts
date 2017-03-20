@@ -12,11 +12,10 @@ export class DateConvert implements PipeTransform {
       return value;
     }
     else {
-      if(value.length == 8){ //If value is the expected length for military time then process to standard time.
+      if(value.length == 4){ //If value is the expected length for military time then process to standard time.
         let hour = value.substring ( 0,2 ); //Extract hour
         let minutes = value.substring ( 3,5 ); //Extract minutes
         let identifier = 'AM'; //Initialize AM PM identifier
-        let newValue = hour + ':' + minutes + ' ' + identifier;
 
         if(hour == 12){ //If hour is 12 then should set AM PM identifier to PM
           identifier = 'PM';
@@ -29,7 +28,7 @@ export class DateConvert implements PipeTransform {
           identifier='PM';
         }
         //Return the constructed standard time
-        return newValue;
+        return hour + ':' + minutes + ' ' + identifier;
       }
       else { //If value is not the expected length than just return the value as is
         return value;

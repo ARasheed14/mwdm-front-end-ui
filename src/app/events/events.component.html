@@ -19,28 +19,27 @@
 </ion-header>
 <ion-content padding class="scroll-content">
 <div *ngFor="let event of events">
+
   <ion-grid no-padding>
     <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
+
     <ion-row class="event" (click)="pushPage(event)">
-        <ion-col col-3 class="reducedPadding">
-          <ion-row class="eventDay">
-            <ion-col col-12>
-            {{ event.date.day }}
+        <ion-col col-4 class="reducedPadding">
+          <ion-row>
+            <ion-col col-12 class="eventDay">
+            <!-- {{event.startDate | amDateFormat: 'M/DD/YY'}} at {{event.startDate | amDateFormat: 'h:mm a' }} -->
+            {{event.startDate | amDateFormat: 'dddd' | uppercase}}
+            </ion-col>
+            <ion-col col-12 class="eventMonth">
+            {{event.startDate | amDateFormat: 'MMM' | uppercase}}
+            </ion-col>
+            <ion-col col-12 class="eventDate">
+            {{event.startDate | amDateFormat: 'D' | uppercase}}
             </ion-col>
             </ion-row>
-          <ion-row class="eventMonth">
-            <ion-col col-12>
-              {{ event.date.month }}
-            </ion-col>
-            </ion-row>
-          <ion-row class="eventDate">
-            <ion-col col-12>
-              {{ event.date.number }}
-            </ion-col>
-          </ion-row>
         </ion-col>
 
-        <ion-col col-9>
+        <ion-col col-8>
           <ion-row class="eventTitle">
             <ion-col col-12>
               {{event.title}}
@@ -51,7 +50,7 @@
                 <ion-icon name="pin" class="ionpin" color="secondary"></ion-icon>
             </ion-col>
             <ion-col col-8 class="locdetails">
-                {{event.location.name}} | {{event.time}}
+                {{event.location.name }}
             </ion-col>
           </ion-row>
         </ion-col>
