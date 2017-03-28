@@ -19,29 +19,38 @@
 </ion-header>
 <ion-content padding class="scroll-content">
 <div *ngFor="let event of events">
-  <ion-grid>
-    <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
-    <ion-row class="event" (click)="pushPage(event)" align-items-center>
 
-        <ion-col>
-          <ion-row class="eventDay">{{ event.date.day }}</ion-row>
-          <ion-row class="eventMonth">{{ event.date.month }}</ion-row>
-          <ion-row class="eventDate">{{ event.date.number }}</ion-row>
-        </ion-col>
-        <ion-col col-8>
-          <ion-row class="eventdetails">
-            {{event.title}}
-          </ion-row>
+  <ion-grid no-padding>
+    <ion-row class="imgdetail"><img src="{{event.imageUrl}}"/></ion-row>
+
+    <ion-row class="event" (click)="pushPage(event)">
+        <ion-col col-4 class="reducedPadding">
           <ion-row>
-            <ion-col col-2>
-              <ion-row>
-                <ion-icon name="pin" class="ionpin" color="secondary"></ion-icon>
-              </ion-row>
+            <ion-col col-12 class="eventDay">
+            <!-- {{event.startDate | amDateFormat: 'M/DD/YY'}} at {{event.startDate | amDateFormat: 'h:mm a' }} -->
+            {{event.startDate | amDateFormat: 'dddd' | uppercase}}
             </ion-col>
-            <ion-col col-10>
-              <ion-row class="locdetails">
-                {{event.location.name}} | {{event.time}}
-              </ion-row>
+            <ion-col col-12 class="eventMonth">
+            {{event.startDate | amDateFormat: 'MMM' | uppercase}}
+            </ion-col>
+            <ion-col col-12 class="eventDate">
+            {{event.startDate | amDateFormat: 'D' | uppercase}}
+            </ion-col>
+            </ion-row>
+        </ion-col>
+
+        <ion-col col-8>
+          <ion-row class="eventTitle">
+            <ion-col col-12>
+              {{event.title}}
+              </ion-col>
+          </ion-row>
+          <ion-row class="eventdetails">
+            <ion-col col-4>
+                <ion-icon name="pin" class="ionpin" color="secondary"></ion-icon>
+            </ion-col>
+            <ion-col col-8 class="locdetails">
+                {{event.location.name }}
             </ion-col>
           </ion-row>
         </ion-col>
