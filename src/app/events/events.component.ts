@@ -26,10 +26,6 @@ export class EventsComponent {
   getEvents(){
     this.eventsService.getEvents().subscribe(response => {
       this.events = response.Items;
-      // console.log(this.events);
-      // console.log(response);
-      // console.log(response.Items);
-
     });
   }
   pushPage(event){

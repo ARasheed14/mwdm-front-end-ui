@@ -9,7 +9,7 @@ export class LecturesService {
   baseUrl: String;
   constructor(http: Http) {
     this.http = http;
-    this.baseUrl = 'https://api.spreaker.com/v2/users/8114541/episodes'
+    this.baseUrl = 'https://api.spreaker.com/v2/users/masjidwdm/episodes?limit=7'
   }
   getEpisodes(){
     return this.http.get(this.baseUrl)
