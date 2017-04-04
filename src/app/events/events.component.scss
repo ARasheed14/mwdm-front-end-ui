@@ -33,9 +33,7 @@ div .locdetails {
 .col {
   padding: 2px;
 }
-.scroll-content{
-  height: 100%;
-}
+
 h1 {
   @include text-styles;
 }
@@ -139,10 +137,6 @@ margin-bottom: 0px;
   height: 27px;
   margin: 8;
 }
-// google maps
-.scroll-content {
-    height: 100%
-      }
 
 #map {
         width: 100%;
