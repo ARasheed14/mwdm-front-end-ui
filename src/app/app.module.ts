@@ -1,62 +1,78 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { IonicAudioModule } from 'ionic-audio';
-import { MyApp } from './app.component';
-import { EventsComponent } from './events/events.component';
-import { EventsDetailComponent } from './events/events-detail.component';
-import { EventsService } from './events/events.service';
-import { EventsMapComponent } from './events/events-map.component';
-import { LecturesComponent } from './lectures/lectures.component';
-import { DonateComponent } from './donate/donate.component';
-import { PayPalComponent } from './donate/paypal.component';
-import { ProgramsComponent } from './programs/programs.component';
+import { IonicStorageModule } from '@ionic/storage';
+
+import { ConferenceApp } from './app.component';
+
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from './tabs/tabs';
-import { HttpModule } from '@angular/http';
-import { LecturesService } from './lectures/lectures.service';
-import { ProgramsService } from './programs/programs.service';
-import { DateConvert } from './pipes/date.pipe';
-import { MomentModule } from 'angular2-moment';
+import { PopoverPage } from '../pages/about-popover/about-popover';
+import { AccountPage } from '../pages/account/account';
+import { LoginPage } from '../pages/login/login';
+import { MapPage } from '../pages/map/map';
+import { SchedulePage } from '../pages/schedule/schedule';
+import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
+import { SessionDetailPage } from '../pages/session-detail/session-detail';
+import { SignupPage } from '../pages/signup/signup';
+import { SpeakerDetailPage } from '../pages/speaker-detail/speaker-detail';
+import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
+import { TabsPage } from '../pages/tabs/tabs';
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { SupportPage } from '../pages/support/support';
+
+import { ConferenceData } from '../providers/conference-data';
+import { UserData } from '../providers/user-data';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 @NgModule({
   declarations: [
-    MyApp,
-    EventsComponent,
-    EventsDetailComponent,
-    EventsMapComponent,
-    LecturesComponent,
-    DonateComponent,
-    PayPalComponent,
-    ProgramsComponent,
+    ConferenceApp,
     AboutPage,
-    ContactPage,
-    HomePage,
-    DateConvert,
-    TabsPage
+    AccountPage,
+    LoginPage,
+    MapPage,
+    PopoverPage,
+    SchedulePage,
+    ScheduleFilterPage,
+    SessionDetailPage,
+    SignupPage,
+    SpeakerDetailPage,
+    SpeakerListPage,
+    TabsPage,
+    TutorialPage,
+    SupportPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    IonicAudioModule.forRoot(),
-    MomentModule
+    IonicModule.forRoot(ConferenceApp),
+		IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    EventsComponent,
-    EventsDetailComponent,
-    EventsMapComponent,
-    LecturesComponent,
-    DonateComponent,
-    PayPalComponent,
-    ProgramsComponent,
+    ConferenceApp,
     AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    AccountPage,
+    LoginPage,
+    MapPage,
+    PopoverPage,
+    SchedulePage,
+    ScheduleFilterPage,
+    SessionDetailPage,
+    SignupPage,
+    SpeakerDetailPage,
+    SpeakerListPage,
+    TabsPage,
+    TutorialPage,
+    SupportPage
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, EventsService, LecturesService, ProgramsService]
+  providers: [
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ConferenceData,
+    UserData,
+    InAppBrowser,
+    SplashScreen
+  ]
 })
 export class AppModule { }

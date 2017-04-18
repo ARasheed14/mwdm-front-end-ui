@@ -1,6 +1,6 @@
 {
-  "name": "mwdm-front-end-ui",
+  "name": "ionic-conference-app",
   "app_id": "",
-  "v2": true,
-  "typescript": true
+  "typescript": true,
+  "v2": true
 }
