@@ -1,0 +1,32 @@
+<ion-header no-border>
+    <ion-navbar>
+        <button ion-button icon-only>
+      <ion-icon name="close"></ion-icon>
+    </button>
+        <ion-buttons end>
+            <button ion-button (click)="login()">
+                Next
+             </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    	<form #loginForm="ngForm" novalidate>
+		<ion-list no-lines>
+			<ion-item>
+				<ion-label stacked color="primary">Please Enter an email.</ion-label>
+				<ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off"
+					required placeholder="Email Address">
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+				Email is required
+			</p>
+		</ion-list>
+		<ion-row responsive-sm>
+			<ion-col>
+				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-content>
