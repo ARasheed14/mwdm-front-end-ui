@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content no-bounce>
-  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+  <ion-slides #slides pager>
 
     <ion-slide>
       <img src="assets/images/onboarding-icon-events.png" class="slide-image" />
@@ -32,6 +32,6 @@
   </ion-slides>
 </ion-content>
 
-<ion-footer>
-  <button ion-button block (click)="presentLoginModal()">Get Started</button>
+<ion-footer padding>
+    <button class="btn-get-started" ion-button round color="secondary" (click)="presentLoginModal()">Get Started</button>
 </ion-footer>
