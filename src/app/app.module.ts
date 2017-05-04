@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-
+import { ReactiveFormsModule } from "@angular/forms";
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicAudioModule } from 'ionic-audio';
@@ -72,6 +72,7 @@ import { MomentModule } from 'angular2-moment';
     IonicStorageModule.forRoot(),
     IonicAudioModule.forRoot(),
     MomentModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

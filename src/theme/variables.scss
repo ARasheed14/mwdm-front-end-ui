@@ -39,16 +39,19 @@ $colors: (
   facebook:   #3b5998
 );
 
-
+$font: Roboto-Regular, -apple-system, "Helvetica Neue", sans-serif;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+$spinner-ios-ios-color: #fff;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
+
+$spinner-md-ios-color: #fff;
+$spinner-md-circles-color:#fff;
 
 // Use the primary color as the background for the toolbar-md-background
 $toolbar-md-background:                   color($colors, primary);

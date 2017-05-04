@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ModalController, NavParams, NavController } from 'ionic-angular';
+import { Component, ViewChild} from '@angular/core';
+import { ModalController, NavParams, NavController, Slides } from 'ionic-angular';
 import { EmailCaptureComponent } from "./email-capture.component";
 
 @Component({
@@ -9,10 +9,12 @@ import { EmailCaptureComponent } from "./email-capture.component";
 export class OnBoardingComponent {
 
   constructor(public modalControler: ModalController, public navCtrl: NavController) {}
-
+  /**
+   * @name presentLoginModal
+   * @description Presents the Email Capture Modal
+   */
   presentLoginModal(){
     let emailCaptureModal = this.modalControler.create(EmailCaptureComponent);
     emailCaptureModal.present();
   }
-
 }

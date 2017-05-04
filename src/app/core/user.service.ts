@@ -15,9 +15,16 @@ export class UserService {
     public storage: Storage
   ) { }
 
+  requestConfirmationCode(email:string): Observable<any>{
+    return Observable.timer(1000)
+    .flatMap(()=>{
+      return Observable.of('123456');
+    });
+  }
+  
   login(email: string): Observable<any> {
-    this.storage.set(this.HAS_LOGGED_IN, true);
-    return this.setEmail(email);
+      this.storage.set(this.HAS_LOGGED_IN, true);
+      return this.setEmail(email);
   };
 
   setEmail(email: string): Observable<any> {

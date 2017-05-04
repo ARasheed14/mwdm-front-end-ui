@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ModalController, NavParams, NavController} from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController, Slides, ViewController } from 'ionic-angular';
 
 // components
 import { TabsPage } from "../tabs/tabs";
@@ -14,19 +14,130 @@ import { UserService } from "../core/user.service";
 })
 export class EmailCaptureComponent {
   // public properties
-  login: {email?: string} = {};
-  confirmation: {confirmationCode?:string} = {}; 
-  isEmailCaptureScreen = true;   
-  submitted: boolean = false;
 
-  constructor(public modalControler: ModalController, public navCtrl: NavController, private userService: UserService) {}
-  onLogin(form: NgForm) {
-    this.submitted = true;
+  // forms
+  emailForm: FormGroup;
+  passcodeForm: FormGroup;
 
-    if (form.valid) {
-      this.userService.login(this.login.email).subscribe(()=>{
-        this.navCtrl.push(TabsPage);
+  confirmation: { confirmationCode?: string } = {};
+  isEmailCaptureScreen = true;
+  isEmailSubmitted: boolean = false;
+  isPasscodeSubmitted: boolean = false;
+  isSpinner: boolean = false;
+  passcode: string;
+  registrationStep: number = 0;
+
+  @ViewChild(Slides) slides: Slides;
+
+
+  constructor(
+    private fb: FormBuilder,
+    public viewController: ViewController,
+    public navCtrl: NavController,
+    private userService: UserService
+  ) {
+    this.buildEmailForm();
+    this.buildPasscodeForm();
+  }
+
+  ionViewDidLoad() {
+    console.log('hi');
+  }
+  /**
+   * @name buildEmailForm
+   * @description build the email form and sets up validation 
+   */
+  buildEmailForm() {
+    this.emailForm = this.fb.group({
+      'email': ['', [
+        Validators.required,
+        Validators.email
+      ]
+      ]
+    });
+
+    // this.emailForm.valueChanges
+    //   .subscribe(data => this.onValueChanged(data));
+  }
+
+  /**
+   * @name buildPasscodeForm
+   * @description build the passcode form and setup validation
+   */
+  buildPasscodeForm() {
+    this.passcodeForm = this.fb.group({
+      'passcode': ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(6)
+      ]
+      ]
+    });
+  }
+
+  /**
+   * @name dismiss
+   * @description Dismiss the current modal page
+   */
+  dismiss() {
+    this.viewController.dismiss();
+  }
+
+  /**
+   * @name goToNextStep
+   * @description LoginMoves to Next Slide
+   */
+  goToNextStep() {
+    this.registrationStep++;
+  }
+
+  /**
+   * @name goToPreviousSlide
+   * @description Login Moves to Previous Slide
+   */
+  goToPreviousSlide() {
+    this.registrationStep--;
+  }
+  /**
+   * @name sendEmailToRetrievePasscode
+   * @description Sends an email address to the API
+   */
+  sendEmailToRetrievePasscode(resend?:boolean) {
+    this.isEmailSubmitted = true;
+    if (this.emailForm.valid) {
+      this.isSpinner = true;
+      this.userService.requestConfirmationCode(this.emailForm.value.email).subscribe((passcode: string) => {
+        this.passcode = passcode;
+        this.isSpinner = false;
+
+        if(!resend) this.goToNextStep();
+        
       });
+    }
+  }
+
+  /**
+   * @name next
+   * @description Process the next interaction button. If it is first step it will run sendEmailToRetrievePasscode or
+   * confirmPasscode method
+   */
+  next() {
+    if (this.registrationStep == 0) {
+      this.sendEmailToRetrievePasscode();
+      return;
+    }
+
+    this.confirmPasscode();
+  }
+
+  confirmPasscode() {
+    this.isPasscodeSubmitted = true;
+    if (this.passcodeForm.valid) {
+      if (this.passcode = this.passcodeForm.value.passcode) {
+        this.userService.login(this.emailForm.value.email).subscribe(() => {
+          this.navCtrl.push(TabsPage);
+        });
+      }
     }
   }
 }
