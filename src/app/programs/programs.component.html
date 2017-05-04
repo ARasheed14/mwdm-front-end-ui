@@ -15,23 +15,75 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding class="scroll-content">
 
-<ion-grid>
-  <ion-row>
-    <ion-row>
-      <ion-col>
-        <img src="./assets/images/Quran.jpg"/>
-      </ion-col>
-    </ion-row>
-    </ion-row>
-  <ion-list *ngFor="let program of programs">
-  <ion-list-header>
-   <h2>{{program.dayOfWeek | amDateFormat:'dddd'}}</h2>
-  </ion-list-header>
-  <ion-item> <ion-icon name="book"></ion-icon> {{program.name}}</ion-item>
-  <ion-item>Starts: {{program.startTime | amDateFormat: 'h:mm a'}}</ion-item>
-  <ion-item>Ends: {{program.endTime | amDateFormat: 'h:mm a'}}</ion-item>
-</ion-list>
-</ion-grid>
+<ion-content>
+  <ion-item-group *ngIf="programs.Monday && programs.Monday.length != 0">
+    <ion-item-divider color="light">Monday</ion-item-divider>
+ <ion-item *ngFor="let program of programs.Monday">
+      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
+      <span>{{program.name}}</span>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group *ngIf="programs.Tuesday && programs.Tuesday.length != 0">
+    <ion-item-divider color="light">Tuesday</ion-item-divider>
+     <ion-item *ngFor="let program of programs.Tuesday">
+      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
+      <span>{{program.name}}</span>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group *ngIf="programs.Wednesday && programs.Wednesday.length != 0">
+    <ion-item-divider color="light">Wednesday</ion-item-divider>
+     <ion-item *ngFor="let program of programs.Wednesday">
+      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
+      <span>{{program.name}}</span>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group *ngIf="programs.Thursday && programs.Thursday.length != 0">
+    <ion-item-divider color="light">Thursday</ion-item-divider>
+     <ion-item *ngFor="let program of programs.Thursday">
+      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
+      <span>{{program.name}}</span>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group *ngIf="programs.Friday && programs.Friday.length != 0">
+    <ion-item-divider color="light">Friday</ion-item-divider>
+    <ion-item *ngFor="let program of programs.Friday">
+      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
+      <span>{{program.name}}</span>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group *ngIf="programs.Saturday && programs.Saturday.length != 0">
+    <ion-item-divider color="light">Saturday</ion-item-divider>
+    <ion-item *ngFor="let program of programs.Saturday">
+      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
+      <span>{{program.name}}</span>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group *ngIf="programs.Sunday && programs.Sunday.length != 0">
+    <ion-item-divider color="light">Sunday</ion-item-divider>
+     <ion-item *ngFor="let program of programs.Sunday">
+      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
+      <span>{{program.name}}</span>
+    </ion-item>
+  </ion-item-group>
 </ion-content>
+
+<!--
+<ion-content padding class="scroll-content">
+  <ion-list *ngFor="let program of programs">
+    <ion-list-header>
+      <h2>{{program.dayOfWeek | amDateFormat:'dddd'}}</h2>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="book"></ion-icon> {{program.name}}</ion-item>
+    <ion-item>Starts: {{program.startTime | amDateFormat: 'h:mm a'}}</ion-item>
+    <ion-item>Ends: {{program.endTime | amDateFormat: 'h:mm a'}}</ion-item>
+  </ion-list>
+</ion-content>-->
