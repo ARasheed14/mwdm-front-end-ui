@@ -1,19 +1,8 @@
-@mixin text-styles{
-  text-align: center;
-  font-family: robot;
-}
-.button {
-  font-family: roboto;
-}
 
-h1, h2, h3, h4 {
-  @include text-styles;
-}
 .border {
   border-bottom: 1px solid #b8b8b8;
 }
 p {
-  @include text-styles;
   font-size: 16px;
 }
 
