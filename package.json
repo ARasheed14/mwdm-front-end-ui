@@ -21,7 +21,7 @@
     "@angular/http": "4.0.2",
     "@angular/platform-browser": "4.0.2",
     "@angular/platform-browser-dynamic": "4.0.2",
-    "@ionic-native/core": "3.4.2",
+    "@ionic-native/core": "^3.6.1",
     "@ionic-native/google-maps": "^3.4.4",
     "@ionic-native/in-app-browser": "3.4.2",
     "@ionic-native/launch-navigator": "^3.4.4",
