@@ -5,6 +5,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicAudioModule } from 'ionic-audio';
 import { IonicStorageModule } from '@ionic/storage';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -98,6 +99,7 @@ import { MomentModule } from 'angular2-moment';
     OnBoardingService,
     SplashScreen,
     StatusBar,
-    UserService]
+    UserService,
+    LaunchNavigator]
 })
 export class AppModule { }
