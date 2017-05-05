@@ -5,7 +5,7 @@
     </button>
 
     <ion-title>
-      <h1 color="secondary">Donations</h1>
+      <h1 color="secondary">Donate</h1>
     </ion-title>
 
     <ion-buttons end>
@@ -15,28 +15,12 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding class="scroll-content">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <img src="./assets/images/center.jpg"/>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 class="border"><h4>Houston Masjid of Al-Islam Presents!</h4></ion-col>
-        <ion-col col-12 class="border"><h2>Ibrahim Kamaluddin Community Center</h2></ion-col>
-        <p>
-          Join us as we build the Houston Masjid of Al-Islam's own community center. The Ibrahim Kamaluddin Center!
-          This center will serve as a safe space promoting plenty of activities for our community not only for our current
-          generations, but for the generation to come in the future. Be a part of the vision! Please become a part of the project.
-          Engage! Contribute to the vision!
-
-        </p>
-
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 (click)="pushPage()"> <button ion-button block>Donate With PayPal</button></ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content class="scroll-content">
+  <p text-center>Please Select Donation Option</p>
+<ion-list>
+  <button ion-item *ngFor="let option of donationOptions" (click)="goToDonateDetail(option)">
+    {{ option.name }}
+  </button>  
+</ion-list>
 </ion-content>
 

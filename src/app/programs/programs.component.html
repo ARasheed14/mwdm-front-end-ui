@@ -20,7 +20,7 @@
   <ion-item-group *ngIf="programs.Monday && programs.Monday.length != 0">
     <ion-item-divider color="light">Monday</ion-item-divider>
  <ion-item *ngFor="let program of programs.Monday">
-      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.startTime | amDateFormat: 'h:mm'}} - </span>
       <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
       <span>{{program.name}}</span>
     </ion-item>
@@ -28,7 +28,7 @@
   <ion-item-group *ngIf="programs.Tuesday && programs.Tuesday.length != 0">
     <ion-item-divider color="light">Tuesday</ion-item-divider>
      <ion-item *ngFor="let program of programs.Tuesday">
-      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.startTime | amDateFormat: 'h:mm'}} - </span>
       <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
       <span>{{program.name}}</span>
     </ion-item>
@@ -36,7 +36,7 @@
   <ion-item-group *ngIf="programs.Wednesday && programs.Wednesday.length != 0">
     <ion-item-divider color="light">Wednesday</ion-item-divider>
      <ion-item *ngFor="let program of programs.Wednesday">
-      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.startTime | amDateFormat: 'h:mm'}} - </span>
       <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
       <span>{{program.name}}</span>
     </ion-item>
@@ -44,7 +44,7 @@
   <ion-item-group *ngIf="programs.Thursday && programs.Thursday.length != 0">
     <ion-item-divider color="light">Thursday</ion-item-divider>
      <ion-item *ngFor="let program of programs.Thursday">
-      <span>{{program.startTime | amDateFormat: 'h:mm a'}} - </span>
+      <span>{{program.startTime | amDateFormat: 'h:mm'}} - </span>
       <span>{{program.endTime | amDateFormat: 'h:mm a'}}</span>
       <span>{{program.name}}</span>
     </ion-item>

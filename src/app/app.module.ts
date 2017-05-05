@@ -30,6 +30,7 @@ import { LecturesComponent } from './lectures/lectures.component';
 
 // Donations
 import { DonateComponent } from './donate/donate.component';
+import { DonateDetailComponent } from './donate/donate-detail.component';
 import { PayPalComponent } from './donate/paypal.component';
 
 // import { DonationDetailComponent } from "./payment/payment-detail/payment-detail.component";
@@ -58,6 +59,7 @@ import { MomentModule } from 'angular2-moment';
     EventsMapComponent,
     LecturesComponent,
     DonateComponent,
+    DonateDetailComponent,
     PayPalComponent,
     ProgramsComponent,
     EmailCaptureComponent,
@@ -82,6 +84,7 @@ import { MomentModule } from 'angular2-moment';
     EventsMapComponent,
     LecturesComponent,
     DonateComponent,
+    DonateDetailComponent,
     PayPalComponent,
     ProgramsComponent,
     EmailCaptureComponent,

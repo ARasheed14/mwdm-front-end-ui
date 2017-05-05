@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button icon-only menuToggle>
+      <img src="./assets/images/masjidLogoone.png" class="headerlogo"/>
+    </button>
+
+        <ion-title>
+            <h1 color="secondary">Donate</h1>
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only>
+        <ion-icon name="more" color="secondary"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="scroll-content">
+    <form [formGroup]="donateForm" (ngSubmit)="logForm()">
+        <!--<ion-item>
+        <ion-label>donateForm</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>-->
+        <ion-list radio-group formControlName="amount">
+
+            <ion-list-header>
+                Please Select Amount
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>$10</ion-label>
+                <ion-radio value="10"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>$25</ion-label>
+                <ion-radio value="25"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>$50</ion-label>
+                <ion-radio value="50"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>$100</ion-label>
+                <ion-radio value="100"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>$250</ion-label>
+                <ion-radio value="250"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Other</ion-label>
+                <ion-radio value="other"></ion-radio>
+            </ion-item>
+        </ion-list>
+        <ion-item *ngIf="donateForm.controls.amount.value == 'other'">
+            <ion-input type="number" formControlName="otherAmount" [disabled]="donateForm.controls.amount.value != 'other'" placeholder="Please Enter Amount"></ion-input>
+        </ion-item>
+        <button class="full-width-btn" ion-button round color="secondary" type="submit" [disabled]="!donateForm.valid">Submit</button>
+    </form>
+</ion-content>
