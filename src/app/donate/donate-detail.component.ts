@@ -15,17 +15,24 @@ export class DonateDetailComponent {
   private selectedAmount: number;
   private donationOption: string;
 
-  constructor(private formBuilder: FormBuilder, private navParams:NavParams) {
-    this.donationOption = this.navParams.get('donationOption').name;
-    this.donateForm = this.formBuilder.group({
-      amount: ['', Validators.required],
-      otherAmount: ['']
+  constructor(private formBuilder: FormBuilder,
+    private navParams: NavParams,
+    public platform: Platform,
+    private paypal: PayPal
+  ) {
+    platform.ready().then(() => {
+      this.initializePaypal();
+      this.donationOption = this.navParams.get('donationOption').name;
+      this.donateForm = this.formBuilder.group({
+        amount: ['', Validators.required],
+        otherAmount: ['']
+      });
     });
   }
 
   logForm() {
-    if(this.donateForm.valid){
-      this.initiatePayment(this.donationOption,this.getSelectedAmount())
+    if (this.donateForm.valid) {
+      this.initiatePayment(this.donationOption, this.getSelectedAmount())
     }
   }
 
@@ -33,16 +40,36 @@ export class DonateDetailComponent {
    * @name initiatePayment
    * @description Initiates payment w/Paypal
    */
-  initiatePayment(donationOption:string,selectedAmount:number){
-    console.log(donationOption,selectedAmount);
+  initiatePayment(donationOption: string, selectedAmount: string) {
+    console.log(donationOption, selectedAmount);
+    let payment = new PayPalPayment(selectedAmount, 'USD', donationOption,'sale');
+    this.paypal.renderSinglePaymentUI(payment)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
-   /**
-   * @name getSelectedAmount
-   * @description Returns appropriate amount based on default selection or other amount entered
-   */
-  private getSelectedAmount(){
-    if(this.donateForm.value.amount === 'other'){
-        return this.donateForm.value.otherAmount;
+
+  initializePaypal() {
+    this.paypal.init({
+      "PayPalEnvironmentProduction": "xQK4ixDtwG9ZFgK9ysOEDM0B29pt3HHYjrZYfkdEQhsQDonWAo0Wj3EH_yoSC4j5FXbgbxlX",
+      "PayPalEnvironmentSandbox": "AX3y3effubdhXEHe81wwFcIzUv7AkOBDcV1bVWVtrkFbRQ1Azbr5eYWrtQWTYIaarLNLAGoY60f7cvcu"
+    }).then(()=>{
+       this.paypal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+          // Only needed if you get an "Internal Service Error" after PayPal login!
+          //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+      }));
+    })
+  }
+  /**
+  * @name getSelectedAmount
+  * @description Returns appropriate amount based on default selection or other amount entered
+  */
+  private getSelectedAmount() {
+    if (this.donateForm.value.amount === 'other') {
+      return this.donateForm.value.otherAmount;
     }
     return this.donateForm.value.amount;
   }

@@ -106,6 +106,6 @@
     </plugin>
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="~3.2.2" />
     <plugin name="com.paypal.cordova.mobilesdk" spec="~3.4.0" />
+    <engine name="android" spec="~6.1.2" />
     <engine name="ios" spec="~4.3.1" />
-    <engine name="android" spec="~6.1.0" />
 </widget>
