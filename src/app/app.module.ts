@@ -3,6 +3,8 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { IonicAudioModule } from 'ionic-audio';
 import { IonicStorageModule } from '@ionic/storage';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
@@ -24,7 +26,6 @@ import { UserService } from "./core/user.service";
 import { EventsComponent } from './events/events.component';
 import { EventsDetailComponent } from './events/events-detail.component';
 import { EventsService } from './events/events.service';
-import { EventsMapComponent } from './events/events-map.component';
 
 // Lectures
 import { LecturesComponent } from './lectures/lectures.component';
@@ -51,13 +52,29 @@ import { ProgramsService } from './programs/programs.service';
 import { DateConvert } from './pipes/date.pipe';
 import { MomentModule } from 'angular2-moment';
 
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'bd29fd2b'
+  },
+  'push': {
+    'sender_id': '451568842532',
+    'pluginConfig': {
+      'ios': {
+        'badge': true,
+        'sound': true
+      },
+      'android': {
+        'iconColor': '#343434'
+      }
+    }
+  }
+};
 
 @NgModule({
   declarations: [
     MyApp,
     EventsComponent,
     EventsDetailComponent,
-    EventsMapComponent,
     LecturesComponent,
     DonateComponent,
     DonateDetailComponent,
@@ -72,6 +89,7 @@ import { MomentModule } from 'angular2-moment';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings),
     IonicStorageModule.forRoot(),
     IonicAudioModule.forRoot(),
     MomentModule,
@@ -82,7 +100,6 @@ import { MomentModule } from 'angular2-moment';
     MyApp,
     EventsComponent,
     EventsDetailComponent,
-    EventsMapComponent,
     LecturesComponent,
     DonateComponent,
     DonateDetailComponent,

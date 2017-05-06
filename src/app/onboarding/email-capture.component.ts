@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, Slides, ViewController } from 'ionic-angular';
+import { Push,PushToken } from '@ionic/cloud-angular';
+
 
 // components
 import { TabsPage } from "../tabs/tabs";
@@ -34,7 +36,8 @@ export class EmailCaptureComponent {
     private fb: FormBuilder,
     public viewController: ViewController,
     public navCtrl: NavController,
-    private userService: UserService
+    public push: Push,
+    private userService: UserService,
   ) {
     this.buildEmailForm();
     this.buildPasscodeForm();
@@ -102,7 +105,7 @@ export class EmailCaptureComponent {
    * @name sendEmailToRetrievePasscode
    * @description Sends an email address to the API
    */
-  sendEmailToRetrievePasscode(resend?:boolean) {
+  sendEmailToRetrievePasscode(resend?: boolean) {
     this.isEmailSubmitted = true;
     if (this.emailForm.valid) {
       this.isSpinner = true;
@@ -110,8 +113,8 @@ export class EmailCaptureComponent {
         this.passcode = passcode;
         this.isSpinner = false;
 
-        if(!resend) this.goToNextStep();
-        
+        if (!resend) this.goToNextStep();
+
       });
     }
   }
@@ -135,7 +138,18 @@ export class EmailCaptureComponent {
     if (this.passcodeForm.valid) {
       if (this.passcode = this.passcodeForm.value.passcode) {
         this.userService.login(this.emailForm.value.email).subscribe(() => {
-          this.navCtrl.push(TabsPage);
+          this.push.register()
+            .then((t: PushToken) => {
+              return this.push.saveToken(t);
+            })
+            .then((t: PushToken) => {
+              console.log('Token saved',t.token);
+              this.navCtrl.push(TabsPage);
+            })
+            .catch((err)=>{
+              console.error(err);
+              console.error('push token not saved');
+            })
         });
       }
     }
