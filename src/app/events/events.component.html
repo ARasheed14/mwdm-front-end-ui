@@ -20,67 +20,27 @@
 <ion-content padding class="scroll-content">
   <div *ngFor="let event of events">
     <ion-card (click)="pushPage(event)">
+      <ion-item>
+        <h2>{{event.title}}</h2>
+        <p>{{event.startDate | amDateFormat: 'dddd - MMM DD, YYYY'}}</p>
+      </ion-item>
       <img src="{{event.imageUrl}}" />
       <ion-card-content>
-        <ion-grid>
-          <ion-row>
-            <ion-col col-2>
-              <!--<div class="event-day">
-                {{event.startDate | amDateFormat: 'ddd' | uppercase}}
-              </div>-->
-              <div class="event-month">
-                {{event.startDate | amDateFormat: 'MMM' | uppercase}}
-              </div>
-              <div class="event-date">
-                {{event.startDate | amDateFormat: 'D' | uppercase}}
-              </div>
-            </ion-col>
-            <ion-col class="event-meta" col-10>
-              <div class="event-title">
-              {{event.title}}
-              </div>
-              <div class="event-meta-data">
-                <ion-icon name="pin" color="secondary"></ion-icon><span>{{event.location.name}}</span> <span> | {{event.startDate | amDateFormat: 'h:mm'}}</span>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+        <ion-icon name="calendar" color="secondary"></ion-icon>
+        <div color="secondary">{{event.startDate | amDateFormat: 'MMM DD, YYYY'}}</div>
+      </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="pin" color="secondary"></ion-icon>
+              <div color="secondary">{{event.location.name}}</div>
+            </button>
+          </ion-col>
+        </ion-row>
       </ion-card-content>
     </ion-card>
-    <ion-grid no-padding>
-      <ion-row class="imgdetail"><img src="{{event.imageUrl}}" /></ion-row>
-
-      <ion-row class="event" (click)="pushPage(event)">
-        <ion-col col-4 class="reducedPadding">
-          <ion-row>
-            <ion-col col-12 class="eventDay">
-              {{event.startDate | amDateFormat: 'dddd' | uppercase}}
-            </ion-col>
-            <ion-col col-12 class="eventMonth">
-              {{event.startDate | amDateFormat: 'MMM' | uppercase}}
-            </ion-col>
-            <ion-col col-12 class="eventDate">
-              {{event.startDate | amDateFormat: 'D' | uppercase}}
-            </ion-col>
-          </ion-row>
-        </ion-col>
-
-        <ion-col col-8>
-          <ion-row class="eventTitle">
-            <ion-col col-12>
-              {{event.title}}
-            </ion-col>
-          </ion-row>
-          <ion-row class="eventdetails">
-            <ion-col col-4>
-              <ion-icon name="pin" class="ionpin" color="secondary"></ion-icon>
-            </ion-col>
-            <ion-col col-8 class="locdetails">
-              {{event.location.name }}
-            </ion-col>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </div>
 </ion-content>

@@ -121,18 +121,16 @@ vertical-align: middle;
 .border {
   border-bottom: 1px solid #b8b8b8;
   color: dimgray;
-  font-size: 20px;
+  padding: 10px 0;
 }
 .descr {
   color: dimgray;
   font-size: 20px;
   @include text-styles;
-
 }
 .ionicon {
   font-size: 48px;
   color: secondary;
-  padding-left: 30px;
 }
 .headerlogo {
   height: 27px;
