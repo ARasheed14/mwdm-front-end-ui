@@ -21,7 +21,7 @@ export class DonateDetailComponent {
     private paypal: PayPal
   ) {
     platform.ready().then(() => {
-      this.initializePaypal();
+      // this.initializePaypal();
       this.donationOption = this.navParams.get('donationOption').name;
       this.donateForm = this.formBuilder.group({
         amount: ['', Validators.required],
@@ -42,24 +42,27 @@ export class DonateDetailComponent {
    */
   initiatePayment(donationOption: string, selectedAmount: string) {
     console.log(donationOption, selectedAmount);
-    let payment = new PayPalPayment(selectedAmount, 'USD', donationOption,'sale');
-    this.paypal.renderSinglePaymentUI(payment)
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+    this.initializePaypal()
+      .then(() => {
+        let payment = new PayPalPayment(selectedAmount, 'USD', donationOption, 'sale');
+        return this.paypal.renderSinglePaymentUI(payment)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
   }
 
   initializePaypal() {
-    this.paypal.init({
+    return this.paypal.init({
       "PayPalEnvironmentProduction": "xQK4ixDtwG9ZFgK9ysOEDM0B29pt3HHYjrZYfkdEQhsQDonWAo0Wj3EH_yoSC4j5FXbgbxlX",
       "PayPalEnvironmentSandbox": "AX3y3effubdhXEHe81wwFcIzUv7AkOBDcV1bVWVtrkFbRQ1Azbr5eYWrtQWTYIaarLNLAGoY60f7cvcu"
-    }).then(()=>{
-       this.paypal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-          // Only needed if you get an "Internal Service Error" after PayPal login!
-          //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+    }).then(() => {
+      this.paypal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+        // Only needed if you get an "Internal Service Error" after PayPal login!
+        //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
       }));
     })
   }
