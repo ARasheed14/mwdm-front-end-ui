@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.conferenceapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ionic Conference</name>
+<widget id="QX2YAAM5CY.com.kre8tive.masjidwdmapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Masjid WDM</name>
     <description>
-        An Ionic Framework application for the Ionic Conference.
+        Masjid WDM Mobile App
   </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="abdullah@kre8tive.co" href="http://kre8tive.co/">
+     Kre8tive Team
   </author>
     <content src="index.html" />
     <access origin="*" />
