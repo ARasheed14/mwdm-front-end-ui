@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, Slides, ViewController } from 'ionic-angular';
+import { Push, PushToken } from '@ionic/cloud-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
-
 
 import { Observable } from "rxjs";
 
@@ -45,6 +45,7 @@ export class EmailCaptureComponent {
     private fb: FormBuilder,
     public viewController: ViewController,
     public navCtrl: NavController,
+    public push: Push,
     private userService: UserService,
     private http: Http
   ) {
@@ -114,16 +115,14 @@ export class EmailCaptureComponent {
    * @name sendEmailToRetrievePasscode
    * @description Sends an email address to the API
    */
-  sendEmailToRetrievePasscode(resend?:boolean) {
+  sendEmailToRetrievePasscode(resend?: boolean) {
     this.isEmailSubmitted = true;
     if (this.emailForm.valid) {
       this.isSpinner = true;
       this.userService.requestConfirmationCode(this.emailForm.value.email).subscribe((passcode: string) => {
         this.passcode = passcode;
         this.isSpinner = false;
-
-        if(!resend) this.goToNextStep();
-
+        if (!resend) this.goToNextStep();
       });
     }
   }
@@ -146,18 +145,29 @@ export class EmailCaptureComponent {
     this.isPasscodeSubmitted = true;
     if (this.passcodeForm.valid) {
       if (this.passcode.passcode == this.passcodeForm.value.passcode) {
-          this.http.post(this.apiUrl,
-                JSON.stringify({EmailID:this.emailForm.value.email}))
-                .map((res) => res.json())
-                .subscribe( res => {
-                  this.userService.login(this.emailForm.value.email)
-                  .subscribe(res => {
+        this.http.post(this.apiUrl,
+          JSON.stringify({ EmailID: this.emailForm.value.email }))
+          .map((res) => res.json())
+          .subscribe(res => {
+            this.userService.login(this.emailForm.value.email)
+              .subscribe(res => {
+                this.push.register()
+                  .then((t: PushToken) => {
+                    return this.push.saveToken(t);
+                  })
+                  .then((t: PushToken) => {
+                    console.log('Token saved', t.token);
                     this.navCtrl.push(TabsPage);
                   })
-                },
-                error => {
-                  console.log(error)
-                });
+                  .catch((err) => {
+                    console.error(err);
+                    console.error('push token not saved');
+                  })
+              })
+          },
+          error => {
+            console.log(error)
+          });
       }
     }
   }
