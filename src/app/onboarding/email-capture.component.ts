@@ -118,8 +118,8 @@ export class EmailCaptureComponent {
     this.isEmailSubmitted = true;
     if (this.emailForm.valid) {
       this.isSpinner = true;
-      this.userService.requestConfirmationCode(this.emailForm.value.email).subscribe((response) => {
-        this.passcode = response;
+      this.userService.requestConfirmationCode(this.emailForm.value.email).subscribe((passcode: string) => {
+        this.passcode = passcode;
         this.isSpinner = false;
 
         if(!resend) this.goToNextStep();
@@ -145,7 +145,7 @@ export class EmailCaptureComponent {
   confirmPasscode() {
     this.isPasscodeSubmitted = true;
     if (this.passcodeForm.valid) {
-      if (this.passcode.response == this.passcodeForm.value.passcode) {
+      if (this.passcode.passcode == this.passcodeForm.value.passcode) {
           this.http.post(this.apiUrl,
                 JSON.stringify({EmailID:this.emailForm.value.email}))
                 .map((res) => res.json())
