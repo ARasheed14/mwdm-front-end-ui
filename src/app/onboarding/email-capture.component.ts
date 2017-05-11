@@ -136,7 +136,7 @@ export class EmailCaptureComponent {
   confirmPasscode() {
     this.isPasscodeSubmitted = true;
     if (this.passcodeForm.valid) {
-      if (this.passcode = this.passcodeForm.value.passcode) {
+      if (this.passcode == this.passcodeForm.value.passcode) {
         this.userService.login(this.emailForm.value.email).subscribe(() => {
           this.push.register()
             .then((t: PushToken) => {

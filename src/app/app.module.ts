@@ -10,7 +10,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { PayPal } from "@ionic-native/paypal";
 
 import { MyApp } from './app.component';
 
@@ -117,6 +117,7 @@ const cloudSettings: CloudSettings = {
     SplashScreen,
     StatusBar,
     UserService,
-    LaunchNavigator]
+    LaunchNavigator,
+    PayPal]
 })
 export class AppModule { }
