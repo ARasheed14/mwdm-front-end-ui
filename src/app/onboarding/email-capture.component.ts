@@ -1,6 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, Slides, ViewController } from 'ionic-angular';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
+
+import { Observable } from "rxjs";
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 // components
 import { TabsPage } from "../tabs/tabs";
@@ -24,8 +31,12 @@ export class EmailCaptureComponent {
   isEmailSubmitted: boolean = false;
   isPasscodeSubmitted: boolean = false;
   isSpinner: boolean = false;
-  passcode: string;
+  passcode: any;
   registrationStep: number = 0;
+
+
+  // Api
+  private apiUrl = 'https://bg36te82e5.execute-api.us-west-2.amazonaws.com/dev/masjids/SM866eca5b-a510-4eb7-8144-f51ea2b9d6c2/onboarding';
 
   @ViewChild(Slides) slides: Slides;
 
@@ -34,7 +45,8 @@ export class EmailCaptureComponent {
     private fb: FormBuilder,
     public viewController: ViewController,
     public navCtrl: NavController,
-    private userService: UserService
+    private userService: UserService,
+    private http: Http
   ) {
     this.buildEmailForm();
     this.buildPasscodeForm();
@@ -106,8 +118,8 @@ export class EmailCaptureComponent {
     this.isEmailSubmitted = true;
     if (this.emailForm.valid) {
       this.isSpinner = true;
-      this.userService.requestConfirmationCode(this.emailForm.value.email).subscribe((passcode: string) => {
-        this.passcode = passcode;
+      this.userService.requestConfirmationCode(this.emailForm.value.email).subscribe((response) => {
+        this.passcode = response;
         this.isSpinner = false;
 
         if(!resend) this.goToNextStep();
@@ -133,10 +145,19 @@ export class EmailCaptureComponent {
   confirmPasscode() {
     this.isPasscodeSubmitted = true;
     if (this.passcodeForm.valid) {
-      if (this.passcode == this.passcodeForm.value.passcode) {
-        this.userService.login(this.emailForm.value.email).subscribe(() => {
-          this.navCtrl.push(TabsPage);
-        });
+      if (this.passcode.response == this.passcodeForm.value.passcode) {
+          this.http.post(this.apiUrl,
+                JSON.stringify({EmailID:this.emailForm.value.email}))
+                .map((res) => res.json())
+                .subscribe( res => {
+                  this.userService.login(this.emailForm.value.email)
+                  .subscribe(res => {
+                    this.navCtrl.push(TabsPage);
+                  })
+                },
+                error => {
+                  console.log(error)
+                });
       }
     }
   }

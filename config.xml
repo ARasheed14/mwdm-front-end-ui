@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="io.ionic.conferenceapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Ionic Conference</name>
@@ -6,6 +7,16 @@
   </description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">
       Ionic Framework Team
+=======
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="QX2YAAM5CY.com.kre8tive.masjidwdmapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Masjid WDM</name>
+    <description>
+        Masjid WDM Mobile App
+  </description>
+    <author email="abdullah@kre8tive.co" href="http://kre8tive.co/">
+     Kre8tive Team
+>>>>>>> 58ca3f1619090b00d80bae5a1f26d30461337420
   </author>
   <content src="index.html"/>
   <access origin="*"/>
