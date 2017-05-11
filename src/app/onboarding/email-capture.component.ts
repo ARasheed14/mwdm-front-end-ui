@@ -45,7 +45,7 @@ export class EmailCaptureComponent {
   }
   /**
    * @name buildEmailForm
-   * @description build the email form and sets up validation 
+   * @description build the email form and sets up validation
    */
   buildEmailForm() {
     this.emailForm = this.fb.group({
@@ -111,7 +111,7 @@ export class EmailCaptureComponent {
         this.isSpinner = false;
 
         if(!resend) this.goToNextStep();
-        
+
       });
     }
   }
@@ -133,7 +133,7 @@ export class EmailCaptureComponent {
   confirmPasscode() {
     this.isPasscodeSubmitted = true;
     if (this.passcodeForm.valid) {
-      if (this.passcode = this.passcodeForm.value.passcode) {
+      if (this.passcode == this.passcodeForm.value.passcode) {
         this.userService.login(this.emailForm.value.email).subscribe(() => {
           this.navCtrl.push(TabsPage);
         });

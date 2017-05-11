@@ -1,18 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button icon-only menuToggle>
+  <ion-navbar color="secondary">
+    <ion-icon icon-only class="header-icon">
       <img src="./assets/images/masjidLogoone.png" class="headerlogo"/>
-    </button>
+    </ion-icon>
 
     <ion-title>
-      <h1 color="secondary">Donate</h1>
+      <h2 color="secondary">Donate</h2>
     </ion-title>
 
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="more" color="secondary"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content class="scroll-content">
@@ -20,7 +15,7 @@
 <ion-list>
   <button ion-item *ngFor="let option of donationOptions" (click)="goToDonateDetail(option)">
     {{ option.name }}
-  </button>  
+  </button>
 </ion-list>
 </ion-content>
 
