@@ -32,10 +32,10 @@ export class EventsDetailComponent {
       start: this.start
     };
     this.launchNavigator.navigate(address, options)
-      .then(
-      success => alert('Launched Navigator'),
-      error => alert('Error Launching Navigator: ' + error)
-      );
+      // .then(
+      // success => alert('Launched Navigator'),
+      // error => alert('Error Launching Navigator: ' + error)
+      // );
   }
   /* pushPage(map){
     this.navCtrl.push(EventsMapComponent, {maps: map});

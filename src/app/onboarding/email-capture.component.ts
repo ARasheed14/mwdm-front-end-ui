@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, Slides, ViewController } from 'ionic-angular';
+import { NavController, Slides, ViewController, ModalController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 
@@ -53,7 +53,7 @@ export class EmailCaptureComponent {
   }
 
   ionViewDidLoad() {
-    console.log('hi');
+    console.log('Hi');
   }
   /**
    * @name buildEmailForm
@@ -80,7 +80,7 @@ export class EmailCaptureComponent {
     this.passcodeForm = this.fb.group({
       'passcode': ['', [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(5),
         Validators.maxLength(6)
       ]
       ]
