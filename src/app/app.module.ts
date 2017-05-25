@@ -11,6 +11,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { PayPal } from "@ionic-native/paypal";
+import { Vibration } from '@ionic-native/vibration';
 
 import { MyApp } from './app.component';
 
@@ -118,6 +119,7 @@ const cloudSettings: CloudSettings = {
     StatusBar,
     UserService,
     LaunchNavigator,
-    PayPal]
+    PayPal,
+    Vibration]
 })
 export class AppModule { }

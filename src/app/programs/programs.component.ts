@@ -24,8 +24,29 @@ export class ProgramsComponent {
   ngOnInit() {
     this.getPrograms();
   }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.programs = {
+    Sunday: [],
+    Monday: [],
+    Tuesday: [],
+    Wensday: [],
+    Thursday: [],
+    Friday: [],
+    Saturday: []
+  };
+  this.getPrograms();
+    console.log(this.programs);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   getPrograms() {
     this.programsService.getPrograms().subscribe((programs) => {
+      console.log(programs);
       programs.Items.forEach((program)=>{
         let programKey = Days[parseInt(program.dayOfWeek)-1];
         this.programs[programKey].push(program);

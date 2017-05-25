@@ -11,6 +11,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list *ngIf="episodes">
     <audio-track #audio *ngFor="let track of episodes" [track]="track" (onFinish)="onTrackFinished($event)">
       <ion-item style="padding-left:0;">

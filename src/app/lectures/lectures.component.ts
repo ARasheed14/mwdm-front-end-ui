@@ -27,6 +27,16 @@ export class LecturesComponent {
     this.getEpisodes();
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getEpisodes();
+    console.log(this.episodes);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   getEpisodes() {
     this.lecturesService.getEpisodes().subscribe(response => {
       this.episodes = response.response.items.map(this.formatEpisode);
@@ -54,12 +64,12 @@ export class LecturesComponent {
   }
 
   playSelectedTrack() {
-    // use AudioProvider to control selected track 
+    // use AudioProvider to control selected track
     this._audioProvider.play(this.selectedEpisode);
   }
 
   pauseSelectedTrack() {
-    // use AudioProvider to control selected track 
+    // use AudioProvider to control selected track
     this._audioProvider.pause(this.selectedEpisode);
   }
 

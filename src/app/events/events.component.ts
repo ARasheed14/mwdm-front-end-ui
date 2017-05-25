@@ -23,6 +23,16 @@ export class EventsComponent {
   ngOnInit(){
     this.getEvents();
   }
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getEvents();
+    console.log(this.events);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   getEvents(){
     this.eventsService.getEvents().subscribe(response => {
       this.events = response.Items;

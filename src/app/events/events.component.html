@@ -9,6 +9,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding class="scroll-content">
+   <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div *ngFor="let event of events">
     <ion-card (click)="pushPage(event)">
       <ion-item>
