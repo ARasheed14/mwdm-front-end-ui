@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { LoadingController, ModalController, ViewController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/topromise';
 import { ProgramsService } from './programs.service';
 import { DateConvert } from '../pipes/date.pipe';
+import { LoadingComponent } from '../loading/loading.component';
+
+
 
 
 @Component({
@@ -20,9 +24,17 @@ export class ProgramsComponent {
     Friday: [],
     Saturday: []
   };
-  constructor(http: Http, private programsService: ProgramsService) { }
+  constructor(http: Http, private programsService: ProgramsService, private loadingCtrl: LoadingController, private modalCtrl: ModalController) { }
   ngOnInit() {
+    let loading = this.modalCtrl.create(LoadingComponent);
+
+    // Show Loading Component
+    loading.present();
     this.getPrograms();
+  setTimeout(() => {
+      console.log('Loading complete');
+      loading.dismiss();
+    }, 2000);
   }
 
   doRefresh(refresher) {

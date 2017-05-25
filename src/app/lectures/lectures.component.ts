@@ -1,9 +1,12 @@
 import { Component, Provider } from '@angular/core';
 import { AudioProvider } from 'ionic-audio';
 import { LecturesService } from './lectures.service';
+import { LoadingController, ModalController, ViewController } from 'ionic-angular';
+import { LoadingComponent } from '../loading/loading.component';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/topromise';
 import * as moment from 'moment';
+
 
 // import { HomePage } from '../home/home';
 // import { AboutPage } from '../about/about';
@@ -19,12 +22,19 @@ export class LecturesComponent {
   episodes: any;
   selectedEpisode:any;
 
-  constructor(http: Http, private lecturesService: LecturesService, private _audioProvider: AudioProvider) {
+  constructor(http: Http, private lecturesService: LecturesService, private _audioProvider: AudioProvider, private loadingCtrl: LoadingController, private modalCtrl: ModalController) {
 
   }
 
   ngOnInit() {
+    let loading = this.modalCtrl.create(LoadingComponent);
+    // Show Loading Component
+    loading.present();
     this.getEpisodes();
+  setTimeout(() => {
+      console.log('Loading complete');
+      loading.dismiss();
+    }, 2000);
   }
 
   doRefresh(refresher) {

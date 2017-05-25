@@ -39,9 +39,12 @@ import { PayPalComponent } from './donate/paypal.component';
 // import { DonationDetailComponent } from "./payment/payment-detail/payment-detail.component";
 // import { DonationListComponent } from "./payment/payment-list/payment-list.component";
 
+// Loading
+import { LoadingComponent } from "./loading/loading.component";
 
 // Programs
 import { ProgramsComponent } from './programs/programs.component';
+
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -52,6 +55,7 @@ import { LecturesService } from './lectures/lectures.service';
 import { ProgramsService } from './programs/programs.service';
 import { DateConvert } from './pipes/date.pipe';
 import { MomentModule } from 'angular2-moment';
+
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -84,7 +88,8 @@ const cloudSettings: CloudSettings = {
     EmailCaptureComponent,
     OnBoardingComponent,
     DateConvert,
-    TabsPage
+    TabsPage,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -108,6 +113,7 @@ const cloudSettings: CloudSettings = {
     ProgramsComponent,
     EmailCaptureComponent,
     OnBoardingComponent,
+    LoadingComponent,
     TabsPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler },
