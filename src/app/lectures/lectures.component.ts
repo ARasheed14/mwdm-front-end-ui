@@ -30,26 +30,20 @@ export class LecturesComponent {
     let loading = this.modalCtrl.create(LoadingComponent);
     // Show Loading Component
     loading.present();
-    this.getEpisodes();
-  setTimeout(() => {
-      console.log('Loading complete');
+    this.getEpisodes(()=>{
       loading.dismiss();
-    }, 2000);
-  }
+    })
 
-  doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-    this.getEpisodes();
-    console.log(this.episodes);
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
   }
-
-  getEpisodes() {
+  getEpisodes(callback?) {
     this.lecturesService.getEpisodes().subscribe(response => {
       this.episodes = response.response.items.map(this.formatEpisode);
+      callback();
+    });
+  }
+  doRefresh(refresher) {
+    this.getEpisodes(()=>{
+      refresher.complete();
     });
   }
 

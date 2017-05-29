@@ -20,38 +20,42 @@ import { DateConvert } from '../pipes/date.pipe';
 export class EventsComponent {
   events: any;
   maps: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private eventsService: EventsService, private loadingCtrl: LoadingController, private modalCtrl : ModalController) {
+  loading;
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private eventsService: EventsService,
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController) {
   }
-  ngOnInit(){
-     let loading = this.modalCtrl.create(LoadingComponent);
+
+  ngOnInit() {
+    let loading = this.modalCtrl.create(LoadingComponent);
     // Show Loading Component
     loading.present();
-    this.getEvents();
-  setTimeout(() => {
-      console.log('Loading complete');
+
+    this.getEvents(() =>{
       loading.dismiss();
-    }, 2000);
-  }
-
-
-  doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-    this.getEvents();
-    console.log(this.events);
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
-  }
-
-  getEvents(){
-    this.eventsService.getEvents().subscribe(response => {
-      this.events = response.Items;
     });
   }
-  pushPage(event){
-    this.navCtrl.push(EventsDetailComponent, {events: event});
+
+  getEvents(callback?) {
+    this.eventsService.getEvents().subscribe(response => {
+      this.events = response.Items;
+      callback();
+    });
   }
+
+  doRefresh(refresher) {
+    this.getEvents(() =>{
+      refresher.complete();
+    });
+  }
+
+  pushPage(event) {
+    this.navCtrl.push(EventsDetailComponent, { events: event });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventsComponent');
   }
