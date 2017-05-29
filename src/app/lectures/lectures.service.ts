@@ -6,13 +6,13 @@ import 'rxjs/Rx';
 export class LecturesService {
 
   http: any;
-  baseUrl: String;
+  apiUrl: string;
   constructor(http: Http) {
     this.http = http;
-    this.baseUrl = 'https://api.spreaker.com/v2/users/masjidwdm/episodes?limit=7'
+    this.apiUrl = 'https://api.spreaker.com/v2/users/masjidwdm/episodes?limit=7'
   }
   getEpisodes(){
-    return this.http.get(this.baseUrl)
+    return this.http.get(this.apiUrl)
     .map(res => res.json());
   }
 

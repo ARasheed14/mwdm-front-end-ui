@@ -14,6 +14,9 @@ import { PayPal } from "@ionic-native/paypal";
 
 import { MyApp } from './app.component';
 
+// Environment Service
+import { EnvironmentService } from "./environments/environment.service";
+
 // Onboarding
 import { EmailCaptureComponent } from "./onboarding/email-capture.component";
 import { OnBoardingComponent } from './onboarding/onboarding.component';
@@ -118,6 +121,7 @@ const cloudSettings: CloudSettings = {
     StatusBar,
     UserService,
     LaunchNavigator,
-    PayPal]
+    PayPal,
+    EnvironmentService]
 })
 export class AppModule { }

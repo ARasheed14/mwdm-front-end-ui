@@ -53,9 +53,7 @@ export class EmailCaptureComponent {
     this.buildPasscodeForm();
   }
 
-  ionViewDidLoad() {
-    console.log('Hi');
-  }
+
   /**
    * @name buildEmailForm
    * @description build the email form and sets up validation
