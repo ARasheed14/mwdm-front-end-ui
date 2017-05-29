@@ -9,10 +9,9 @@ import { EnvironmentService } from '../environments/environment.service';
 @Injectable()
 export class EventsService {
 
-  http: any;
-  apiUrl: String;
+  private apiUrl: string;
 
-  constructor(private environmentService: EnvironmentService, http: Http) {
+  constructor(private environmentService: EnvironmentService, private http: Http) {
     this.http = http;
     this.apiUrl = this.environmentService.getAPIUrl() + '/events';
   }

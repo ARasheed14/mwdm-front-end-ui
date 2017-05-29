@@ -24,14 +24,4 @@ export class EnvironmentService {
             return ENV.production.PayPalENV;
         }
     }
-
-    public getPayPalENVKey() : string{
-        if(ENV.currentEnvironment === "development"){
-            return ENV.development.PayPalENVKey;
-        } else if(ENV.currentEnvironment === "test") {
-            return ENV.test.PayPalENVKey;
-        } else if(ENV.currentEnvironment === "production") {
-            return ENV.production.PayPalENVKey;
-        }
-    }
 }

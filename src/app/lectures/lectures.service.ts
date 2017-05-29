@@ -5,9 +5,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class LecturesService {
 
-  http: any;
-  apiUrl: string;
-  constructor(http: Http) {
+  private apiUrl: string;
+  constructor(private http: Http) {
     this.http = http;
     this.apiUrl = 'https://api.spreaker.com/v2/users/masjidwdm/episodes?limit=7'
   }

@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Platform, NavController, NavParams } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from "@ionic-native/paypal";
+
+// Environment
+import { EnvironmentService } from '../environments/environment.service';
 import { PayPalComponent } from './paypal.component';
 import { DonateOption } from "./donate";
+
 
 @Component({
   selector: 'page-donate-detail',
@@ -14,8 +18,12 @@ export class DonateDetailComponent {
   private donateForm: FormGroup;
   private selectedAmount: number;
   private donationOption: string;
+  private payPalENV:string;
+  private payPalENVKey: string;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private environmentService: EnvironmentService,
+    private formBuilder: FormBuilder,
     private navParams: NavParams,
     public platform: Platform,
     private paypal: PayPal
@@ -27,6 +35,7 @@ export class DonateDetailComponent {
         amount: ['', Validators.required],
         otherAmount: ['']
       });
+      this.payPalENV = this.environmentService.getPayPalENV();
     });
   }
 
@@ -41,7 +50,6 @@ export class DonateDetailComponent {
    * @description Initiates payment w/Paypal
    */
   initiatePayment(donationOption: string, selectedAmount: string) {
-    console.log(donationOption, selectedAmount);
     this.initializePaypal()
       .then(() => {
         let payment = new PayPalPayment(selectedAmount, 'USD', donationOption, 'sale');
@@ -60,7 +68,7 @@ export class DonateDetailComponent {
       "PayPalEnvironmentProduction": "xQK4ixDtwG9ZFgK9ysOEDM0B29pt3HHYjrZYfkdEQhsQDonWAo0Wj3EH_yoSC4j5FXbgbxlX",
       "PayPalEnvironmentSandbox": "AX3y3effubdhXEHe81wwFcIzUv7AkOBDcV1bVWVtrkFbRQ1Azbr5eYWrtQWTYIaarLNLAGoY60f7cvcu"
     }).then(() => {
-      this.paypal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+      this.paypal.prepareToRender(this.payPalENV, new PayPalConfiguration({
         // Only needed if you get an "Internal Service Error" after PayPal login!
         //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
       }));
