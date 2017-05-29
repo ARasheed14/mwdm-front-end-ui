@@ -3,18 +3,20 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+// Environment
+import { EnvironmentService } from '../environments/environment.service';
+
 @Injectable()
 export class EventsService {
 
-  http: any;
-  baseUrl: String;
+  private apiUrl: string;
 
-  constructor(http: Http) {
+  constructor(private environmentService: EnvironmentService, private http: Http) {
     this.http = http;
-    this.baseUrl = 'https://bg36te82e5.execute-api.us-west-2.amazonaws.com/dev/masjids/SM866eca5b-a510-4eb7-8144-f51ea2b9d6c2/events'
+    this.apiUrl = this.environmentService.getAPIUrl() + '/events';
   }
   getEvents() {
-    return this.http.get(this.baseUrl)
+    return this.http.get(this.apiUrl)
     .map(res => res.json());
   }
 }

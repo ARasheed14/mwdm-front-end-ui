@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+
+
+// Environment
+import { EnvironmentService } from '../environments/environment.service';
 import { EventsService } from './events.service';
 import { EventsDetailComponent } from './events-detail.component';
 import { EventsMapComponent } from './events-map.component';
 import { DateConvert } from '../pipes/date.pipe';
+
 
 /*
   Generated class for the Events page.
@@ -18,7 +24,9 @@ import { DateConvert } from '../pipes/date.pipe';
 export class EventsComponent {
   events: any;
   maps: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private eventsService: EventsService) {
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams,
+  private eventsService: EventsService) {
   }
   ngOnInit(){
     this.getEvents();
