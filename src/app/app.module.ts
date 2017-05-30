@@ -15,6 +15,9 @@ import { Vibration } from '@ionic-native/vibration';
 
 import { MyApp } from './app.component';
 
+// Environment Service
+import { EnvironmentService } from "./environments/environment.service";
+
 // Onboarding
 import { EmailCaptureComponent } from "./onboarding/email-capture.component";
 import { OnBoardingComponent } from './onboarding/onboarding.component';
@@ -126,6 +129,7 @@ const cloudSettings: CloudSettings = {
     UserService,
     LaunchNavigator,
     PayPal,
-    Vibration]
+    Vibration,
+    EnvironmentService]
 })
 export class AppModule { }
