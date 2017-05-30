@@ -1,6 +1,5 @@
 {
   "name": "Masjid Warithuddeen Mohammed App",
   "app_id": "bd29fd2b",
-  "typescript": true,
-  "v2": true
+  "type": "ionic-angular"
 }

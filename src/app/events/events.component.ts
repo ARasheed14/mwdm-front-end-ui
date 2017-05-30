@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-
-
+import { NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 
 // Environment
 import { EnvironmentService } from '../environments/environment.service';
+
 import { EventsService } from './events.service';
 import { EventsDetailComponent } from './events-detail.component';
 import { EventsMapComponent } from './events-map.component';
+import { LoadingComponent } from '../loading/loading.component';
+
 import { DateConvert } from '../pipes/date.pipe';
 
 
@@ -24,21 +25,43 @@ import { DateConvert } from '../pipes/date.pipe';
 export class EventsComponent {
   events: any;
   maps: any;
-  constructor(public navCtrl: NavController, 
-  public navParams: NavParams,
-  private eventsService: EventsService) {
+
+  loading;
+  
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private eventsService: EventsService,
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController) {
   }
-  ngOnInit(){
-    this.getEvents();
-  }
-  getEvents(){
-    this.eventsService.getEvents().subscribe(response => {
-      this.events = response.Items;
+
+  ngOnInit() {
+    let loading = this.modalCtrl.create(LoadingComponent);
+    // Show Loading Component
+    loading.present();
+
+    this.getEvents(() =>{
+      loading.dismiss();
     });
   }
-  pushPage(event){
-    this.navCtrl.push(EventsDetailComponent, {events: event});
+
+  getEvents(callback?) {
+    this.eventsService.getEvents().subscribe(response => {
+      this.events = response.Items;
+      callback();
+    });
   }
+
+  doRefresh(refresher) {
+    this.getEvents(() =>{
+      refresher.complete();
+    });
+  }
+
+  pushPage(event) {
+    this.navCtrl.push(EventsDetailComponent, { events: event });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventsComponent');
   }

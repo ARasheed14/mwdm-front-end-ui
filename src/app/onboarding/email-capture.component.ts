@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'; ""
 import { NavController, Slides, ViewController } from 'ionic-angular';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
-
+import { Vibration } from '@ionic-native/vibration';
 import { Observable } from "rxjs";
 
 import 'rxjs/add/operator/map';
@@ -51,7 +51,8 @@ export class EmailCaptureComponent {
     public navCtrl: NavController,
     public push: Push,
     private userService: UserService,
-    private http: Http
+    private http: Http,
+    private vibration: Vibration
   ) {
     this.buildEmailForm();
     this.buildPasscodeForm();
@@ -139,15 +140,17 @@ export class EmailCaptureComponent {
   next() {
     if (this.registrationStep == 0) {
       this.sendEmailToRetrievePasscode();
+      this.vibration.vibrate(1000);
+      console.log('Email sent!');
       return;
     }
-
     this.confirmPasscode();
   }
 
   confirmPasscode() {
     this.isPasscodeSubmitted = true;
     if (this.passcodeForm.valid) {
+      this.isSpinner = true;
       if (this.passcode.passcode == this.passcodeForm.value.passcode) {
         this.http.post(this.apiUrl,
           JSON.stringify({ EmailID: this.emailForm.value.email }))
@@ -172,7 +175,13 @@ export class EmailCaptureComponent {
           error => {
             console.log(error)
           });
-      }
+      } else {
+        this.vibration.vibrate(1000);
+        console.log('Vibrate 2');
+       }
+    } else {
+      this.vibration.vibrate(1000);
+      console.log('Vibrate 1');
     }
   }
 }

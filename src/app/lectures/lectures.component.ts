@@ -1,9 +1,12 @@
 import { Component, Provider } from '@angular/core';
 import { AudioProvider } from 'ionic-audio';
 import { LecturesService } from './lectures.service';
+import { LoadingController, ModalController, ViewController } from 'ionic-angular';
+import { LoadingComponent } from '../loading/loading.component';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/topromise';
 import * as moment from 'moment';
+
 
 // import { HomePage } from '../home/home';
 // import { AboutPage } from '../about/about';
@@ -19,17 +22,28 @@ export class LecturesComponent {
   episodes: any;
   selectedEpisode:any;
 
-  constructor(http: Http, private lecturesService: LecturesService, private _audioProvider: AudioProvider) {
+  constructor(http: Http, private lecturesService: LecturesService, private _audioProvider: AudioProvider, private loadingCtrl: LoadingController, private modalCtrl: ModalController) {
 
   }
 
   ngOnInit() {
-    this.getEpisodes();
-  }
+    let loading = this.modalCtrl.create(LoadingComponent);
+    // Show Loading Component
+    loading.present();
+    this.getEpisodes(()=>{
+      loading.dismiss();
+    })
 
-  getEpisodes() {
+  }
+  getEpisodes(callback?) {
     this.lecturesService.getEpisodes().subscribe(response => {
       this.episodes = response.response.items.map(this.formatEpisode);
+      callback();
+    });
+  }
+  doRefresh(refresher) {
+    this.getEpisodes(()=>{
+      refresher.complete();
     });
   }
 
@@ -54,12 +68,12 @@ export class LecturesComponent {
   }
 
   playSelectedTrack() {
-    // use AudioProvider to control selected track 
+    // use AudioProvider to control selected track
     this._audioProvider.play(this.selectedEpisode);
   }
 
   pauseSelectedTrack() {
-    // use AudioProvider to control selected track 
+    // use AudioProvider to control selected track
     this._audioProvider.pause(this.selectedEpisode);
   }
 

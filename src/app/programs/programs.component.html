@@ -10,6 +10,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-item-group *ngIf="programs.Monday && programs.Monday.length != 0">
     <ion-item-divider color="light">Monday</ion-item-divider>
  <ion-item *ngFor="let program of programs.Monday">
