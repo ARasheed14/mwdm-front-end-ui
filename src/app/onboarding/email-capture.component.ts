@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';""
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; ""
 import { NavController, Slides, ViewController } from 'ionic-angular';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -14,6 +14,9 @@ import { TabsPage } from "../tabs/tabs";
 
 // services
 import { UserService } from "../core/user.service";
+
+// Environment
+import { EnvironmentService } from '../environments/environment.service';
 
 @Component({
   selector: 'page-email-capture',
@@ -36,12 +39,13 @@ export class EmailCaptureComponent {
 
 
   // Api
-  private apiUrl = 'https://bg36te82e5.execute-api.us-west-2.amazonaws.com/dev/masjids/SM866eca5b-a510-4eb7-8144-f51ea2b9d6c2/onboarding';
+  private apiUrl: string;
 
   @ViewChild(Slides) slides: Slides;
 
 
   constructor(
+    private environmentService: EnvironmentService,
     private fb: FormBuilder,
     public viewController: ViewController,
     public navCtrl: NavController,
@@ -52,11 +56,11 @@ export class EmailCaptureComponent {
   ) {
     this.buildEmailForm();
     this.buildPasscodeForm();
+    this.apiUrl = this.environmentService.getAPIUrl() + '/onboarding';
+
   }
 
-  ionViewDidLoad() {
-    console.log('Hi');
-  }
+
   /**
    * @name buildEmailForm
    * @description build the email form and sets up validation
