@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Platform, NavController, NavParams } from 'ionic-angular';
+import { Platform, NavController, NavParams, AlertController } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from "@ionic-native/paypal";
 
 // Environment
@@ -23,6 +23,7 @@ export class DonateDetailComponent {
 
   constructor(
     private environmentService: EnvironmentService,
+    public alertCtrl: AlertController,
     private formBuilder: FormBuilder,
     private navParams: NavParams,
     public platform: Platform,
@@ -37,6 +38,24 @@ export class DonateDetailComponent {
       });
       this.payPalENV = this.environmentService.getPayPalENV();
     });
+  }
+
+  successAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'PayPal',
+      subTitle: 'Donation Successful!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  unsuccessAlert(){
+    let alert = this.alertCtrl.create({
+      title: 'PayPal',
+      subTitle: 'Donation unsuccessful!',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   logForm() {
@@ -55,9 +74,11 @@ export class DonateDetailComponent {
         let payment = new PayPalPayment(selectedAmount, 'USD', donationOption, 'sale');
         return this.paypal.renderSinglePaymentUI(payment)
           .then((res) => {
+            this.successAlert()
             console.log(res);
           })
           .catch((err) => {
+            this.unsuccessAlert()
             console.log(err);
           });
       });
