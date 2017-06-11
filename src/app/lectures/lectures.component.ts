@@ -53,12 +53,14 @@ export class LecturesComponent {
    * @param {Object} - episode - from the API
    */
   formatEpisode = (episode) =>{
+    console.log(episode);
         return {
           src: `https://api.spreaker.com/listen/episode/${episode.episode_id}/http`,
           title: episode.title,
           art: episode.image_url,
           preload: 'metadeta',
-          published_at: episode.published_at.split(' ')[0]
+          published_at: episode.published_at.split(' ')[0],
+          type: episode.type
         };
   }
 
