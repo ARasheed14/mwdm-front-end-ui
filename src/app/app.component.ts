@@ -15,7 +15,7 @@ import { UserService } from "./core/user.service";
   providers: [LecturesService]
 })
 export class MyApp {
-  rootPage: any = OnBoardingComponent;
+  rootPage: any;
   constructor(
     private userService: UserService,
     platform: Platform,
@@ -33,7 +33,7 @@ export class MyApp {
       },);
 
       userService.hasLoggedIn().then(data => {
-        if (data) this.rootPage = TabsPage;
+        this.rootPage = data ? TabsPage : OnBoardingComponent;
       })
 
       push.rx.notification()
