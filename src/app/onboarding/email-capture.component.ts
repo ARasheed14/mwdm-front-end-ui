@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; ""
-import { NavController, Slides, ViewController } from 'ionic-angular';
+import { NavController, Slides, ViewController, AlertController } from 'ionic-angular';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Vibration } from '@ionic-native/vibration';
@@ -48,6 +48,7 @@ export class EmailCaptureComponent {
     private environmentService: EnvironmentService,
     private fb: FormBuilder,
     public viewController: ViewController,
+    public alertCtrl: AlertController,
     public navCtrl: NavController,
     public push: Push,
     private userService: UserService,
@@ -140,6 +141,7 @@ export class EmailCaptureComponent {
   next() {
     if (this.registrationStep == 0) {
       this.sendEmailToRetrievePasscode();
+      this.passcodeAlert();
       this.vibration.vibrate(1000);
       console.log('Email sent!');
       return;
@@ -183,5 +185,13 @@ export class EmailCaptureComponent {
       this.vibration.vibrate(1000);
       console.log('Vibrate 1');
     }
+  }
+  passcodeAlert() {
+    let alert = this.alertCtrl.create({
+      title: '',
+      subTitle: 'A passcode has been sent to your email!',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }
