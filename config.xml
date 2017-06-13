@@ -73,6 +73,12 @@
         <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
+        <config-file parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
+            <string>A third party plugin is requesting acces to your photo library.</string>
+        </config-file>
+        <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+            <string>AA third party plugin is requesting acces to your camera.</string>
+        </config-file>
     </platform>
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
@@ -119,4 +125,5 @@
         <variable name="SENDER_ID" value="451568842532" />
     </plugin>
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^3.2.2" />
+    <plugin name="cordova-custom-config" spec="~3.3.0" />
 </widget>
