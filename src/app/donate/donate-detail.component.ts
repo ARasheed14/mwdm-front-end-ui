@@ -86,8 +86,8 @@ export class DonateDetailComponent {
 
   initializePaypal() {
     return this.paypal.init({
-      "PayPalEnvironmentProduction": "xQK4ixDtwG9ZFgK9ysOEDM0B29pt3HHYjrZYfkdEQhsQDonWAo0Wj3EH_yoSC4j5FXbgbxlX",
-      "PayPalEnvironmentSandbox": "AX3y3effubdhXEHe81wwFcIzUv7AkOBDcV1bVWVtrkFbRQ1Azbr5eYWrtQWTYIaarLNLAGoY60f7cvcu"
+      "PayPalEnvironmentProduction": "AcoTtCn3HSaEFo3Gs2PaDNLNPJTWx2DGnZNAWV4v3TBZ-OlGpnCHkmP7_1XlrS6sxcO4NjX3mjiubDBd",
+      "PayPalEnvironmentSandbox": "AWG30Ge8SLOAHvY0-YVWk4q_9Rb8s7UU4SM2vYSW2z9aqvwdqwgPEU-BwUuDCRa2SGdkobVvyLOnKhRW"
     }).then(() => {
       this.paypal.prepareToRender(this.payPalENV, new PayPalConfiguration({
         // Only needed if you get an "Internal Service Error" after PayPal login!
