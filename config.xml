@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.kre8tive.masjidwdmapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.kre8tive.masjidwdmapp" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
     <name>Masjid Warithuddeen Mohammed</name>
     <description>
         An app for Masjid Warithuddeen Mohammed community members and visitors.
@@ -73,6 +74,12 @@
         <splash src="resources/ios/splash/Default-Portrait~ipad.png" width="768" height="1024"/>
         <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>
         <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
+        <config-file parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
+            <string>A third party plugin is requesting acces to your photo library.</string>
+        </config-file>
+        <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+            <string>AA third party plugin is requesting acces to your camera.</string>
+        </config-file>
     </platform>
     <preference name="webviewbounce" value="false"/>
     <preference name="UIWebViewBounce" value="false"/>
@@ -118,5 +125,6 @@
     <plugin name="phonegap-plugin-push" spec="^1.10.4">
         <variable name="SENDER_ID" value="451568842532"/>
     </plugin>
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^3.2.2"/>
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^3.2.2" />
+    <plugin name="cordova-custom-config" spec="~3.3.0" />
 </widget>
