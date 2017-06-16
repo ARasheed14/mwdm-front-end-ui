@@ -21,30 +21,8 @@ private apiUrl = 'https://bg36te82e5.execute-api.us-west-2.amazonaws.com/dev/mas
     private http: Http
   ) { }
 
-  requestConfirmationCode(email:string): Observable<any>{
-        // TODO: create real API call
-        return this.http.get(this.apiUrl + email)
-                        // ...and calling .json() on the response to return data
-                         .map((res) => res.json())
-                         //...errors if any
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-        // return Observable.of('09234');
-    };
-
-
-  login(email: string): Observable<any> {
+  login(){
       this.storage.set(this.HAS_LOGGED_IN, true);
-      return this.setEmail(email);
-  };
-
-  setEmail(email: string): Observable<any> {
-    return Observable.fromPromise(this.storage.set('email', email));
-  };
-
-  getEmail(): Promise<string> {
-    return this.storage.get('email').then((value) => {
-      return value;
-    });
   };
 
   hasLoggedIn(): Promise<boolean> {
