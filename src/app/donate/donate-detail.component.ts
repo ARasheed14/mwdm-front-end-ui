@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Platform, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Platform, NavParams, AlertController } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from "@ionic-native/paypal";
 
 // Environment
 import { EnvironmentService } from '../environments/environment.service';
-import { PayPalComponent } from './paypal.component';
-import { DonateOption } from "./donate";
 
 
 @Component({
@@ -16,10 +14,8 @@ import { DonateOption } from "./donate";
 })
 export class DonateDetailComponent {
   private donateForm: FormGroup;
-  private selectedAmount: number;
   private donationOption: string;
   private payPalENV:string;
-  private payPalENVKey: string;
 
   constructor(
     private environmentService: EnvironmentService,

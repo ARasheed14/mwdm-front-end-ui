@@ -37,7 +37,6 @@ import { LecturesComponent } from './lectures/lectures.component';
 // Donations
 import { DonateComponent } from './donate/donate.component';
 import { DonateDetailComponent } from './donate/donate-detail.component';
-import { PayPalComponent } from './donate/paypal.component';
 
 // import { DonationDetailComponent } from "./payment/payment-detail/payment-detail.component";
 // import { DonationListComponent } from "./payment/payment-list/payment-list.component";
@@ -49,9 +48,7 @@ import { LoadingComponent } from "./loading/loading.component";
 import { ProgramsComponent } from './programs/programs.component';
 
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+
 import { TabsPage } from './tabs/tabs';
 
 import { LecturesService } from './lectures/lectures.service';

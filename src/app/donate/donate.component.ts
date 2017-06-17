@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavController, NavParams } from 'ionic-angular';
-import { PayPalComponent } from './paypal.component';
+import { NavController, NavParams } from 'ionic-angular';
 import { DonateDetailComponent } from "./donate-detail.component";
 import { DonateOption } from "./donate";
 
@@ -9,7 +8,7 @@ import { DonateOption } from "./donate";
   styleUrls:['/donate.component.scss'],
 })
 export class DonateComponent {
-  donationOptions: DonateOption[];  
+  donationOptions: DonateOption[];
   constructor(public navCtrl: NavController, private navParams: NavParams){
     this.donationOptions = [
       {

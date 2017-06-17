@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { Push, PushToken } from '@ionic/cloud-angular';
+import { Push } from '@ionic/cloud-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LecturesService } from './lectures/lectures.service';

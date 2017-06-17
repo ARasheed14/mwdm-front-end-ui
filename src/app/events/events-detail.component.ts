@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { EventsComponent } from './events.component';
-import { EventsMapComponent } from './events-map.component';
 import { EventsService } from './events.service';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 

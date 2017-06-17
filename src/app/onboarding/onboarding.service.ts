@@ -1,9 +1,6 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Sql } from '../core/sql.service';
 
-import { LoadingController } from 'ionic-angular';
-import * as moment from 'moment';
 
 import { Observable } from 'rxjs/Rx';
 

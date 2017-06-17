@@ -5,7 +5,6 @@ import {Pipe} from '@angular/core';
 })
 export class WeekDay {
   transform(value, args) {
-    let dayConvert = "";
     return value;
   }
 }

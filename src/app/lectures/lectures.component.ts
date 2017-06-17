@@ -1,11 +1,11 @@
-import { Component, Provider } from '@angular/core';
+import { Component } from '@angular/core';
 import { AudioProvider } from 'ionic-audio';
 import { LecturesService } from './lectures.service';
-import { LoadingController, ModalController, ViewController } from 'ionic-angular';
+import { LoadingController, ModalController } from 'ionic-angular';
 import { LoadingComponent } from '../loading/loading.component';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/topromise';
-import * as moment from 'moment';
+
 
 
 // import { HomePage } from '../home/home';

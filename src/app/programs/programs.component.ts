@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { LoadingController, ModalController, ViewController } from 'ionic-angular';
+import { LoadingController, ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/topromise';
 import { ProgramsService } from './programs.service';
-import { DateConvert } from '../pipes/date.pipe';
 import { LoadingComponent } from '../loading/loading.component';
 
 
