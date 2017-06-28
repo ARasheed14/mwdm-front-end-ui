@@ -14,27 +14,32 @@ export class DonateComponent {
     this.donationOptions = [
       {
         name:'Zakat',
-        description: ''
+        description: '',
+        url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5UZ9B89FVYQKS'
       },
       {
         name: 'Sadaqah',
-        description: ''
+        description: '',
+        url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L7MM2KDK9ZV8U'
       },
       {
         name: 'Buildling Fund',
-        description: ''
+        description: '',
+        url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6SWDKG76MPWE'
       },
       {
         name: 'IK Community Center',
-        description: ''
+        description: '',
+        url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W6GVQMZMTQL84'
       },
       {
         name: 'Playground Project',
-        description: ''
+        description: '',
+        url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XXS8QNBMBW9L8'
       }
     ];
   }
-  goToDonateDetail(option:string){
-    this.navCtrl.push(DonateDetailComponent,{donationOption: option});
+  goToDonateDetail(option:DonateOption){
+    window.open(option.url);
   }
 }
