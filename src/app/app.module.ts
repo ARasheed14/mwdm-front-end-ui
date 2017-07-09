@@ -19,7 +19,7 @@ import { MyApp } from './app.component';
 import { EnvironmentService } from "./environments/environment.service";
 
 // Onboarding
-import { EmailCaptureComponent } from "./onboarding/email-capture.component";
+
 import { OnBoardingComponent } from './onboarding/onboarding.component';
 
 // Services
@@ -87,7 +87,6 @@ const cloudSettings: CloudSettings = {
     DonateComponent,
     DonateDetailComponent,
     ProgramsComponent,
-    EmailCaptureComponent,
     OnBoardingComponent,
     DateConvert,
     TabsPage,
@@ -112,7 +111,6 @@ const cloudSettings: CloudSettings = {
     DonateComponent,
     DonateDetailComponent,
     ProgramsComponent,
-    EmailCaptureComponent,
     OnBoardingComponent,
     LoadingComponent,
     TabsPage
